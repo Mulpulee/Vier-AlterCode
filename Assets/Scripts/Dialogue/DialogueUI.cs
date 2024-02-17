@@ -100,7 +100,17 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
     {
         m_dialogueBox.transform.position = new Vector3(m_poses[m_talkPos].x, m_poses[m_talkPos].y, m_dialogueBox.transform.position.z);
         m_talkLineText.text = "";
-        m_talkLineStretcher.text = m_talkLine;
+        m_talkLineStretcher.text = "";
+        for (int i = 0; i < m_talkLine.Length; i++)
+        {
+            if (m_talkLine[i] == '`')
+            {
+                while (m_talkLine[++i] != '`') ;
+                i++;
+            }
+
+            m_talkLineStretcher.text += m_talkLine[i];
+        }
         m_talkLineStretcher.GetComponent<ContentSizeFitter>().SetLayoutHorizontal();
 
         if (m_selections == null)
@@ -114,6 +124,23 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
                     {
                         m_talkLineText.text += m_talkLine[i++];
                     }
+                }
+
+                if (m_talkLine[i] == '`')
+                {
+                    switch (m_talkLine[i+1])
+                    {
+                        case 's':
+                            CameraShaker.Instance.ShakeCamera(Int32.Parse(m_talkLine[i + 2].ToString()));
+                            break;
+                        case 'd':
+                            yield return new WaitForSeconds(Int32.Parse(m_talkLine[i + 2].ToString()));
+                            break;
+                        default:
+                            break;
+                    }
+                    while (m_talkLine[++i] != '`') ;
+                    i++;
                 }
 
                 m_talkLineText.text += m_talkLine[i];
