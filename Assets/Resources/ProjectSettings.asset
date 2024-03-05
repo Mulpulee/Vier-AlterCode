@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3585745a30360b54e9b6fff028df073b, type: 3}
+  m_Name: ProjectSettings
+  m_EditorClassIdentifier: 
+  m_settings:
+    GoogleClientID: 377803181406-dkb5m6k5khhm3moie0n73dhlerkcrar4.apps.googleusercontent.com
+    GoogleClientAPI: AIzaSyDjoUJquckBktvrqPn5bj3aM31pBDxBu1c
+    GoogleClientSecret: pHWEAOULsvGkvgOUqz6I3tbQ9Dg3
+    GoogleSpreadSheetID: 1XEYpM0E2mKjMoPCqfpcXihmEf9GIP6z65KPNE1TmVsM
+    SheetNames:
+    - SkillTable

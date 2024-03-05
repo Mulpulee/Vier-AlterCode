@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b659249f11d229149832080e6b36d467, type: 3}
+  m_Name: SkillTableAsset
+  m_EditorClassIdentifier: 
+  Table:
+    m_data:
+      datas:
+      - Key: 20001
+        Value:
+          ID: 20001
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uB300\uC26C"
+          Description: "\uB300\uC2DC\uD560 \uB550 \uBB34\uC801\uD654\uAC00 \uB418\uC5B4
+            \uC801\uC744 \uCCD0\uB0B8\uB2E4."
+          CoolTime: 0.8
+          SkillDatas:
+            datas:
+            - Key: MovePower
+              Value: 50
+            - Key: InvincibilityTime
+              Value: 0.5
+      - Key: 20002
+        Value:
+          ID: 20002
+          Type: "\uD328\uC2DC\uBE0C"
+          Name: "\uD68C\uBCF5"
+          Description: "\uACF5\uACA9\uC744 \uBC1B\uACE0 30\uCD08 \uBC84\uD2F0\uBA74
+            \uD55C \uCE78\uC529 \uCC44\uC6CC\uC9C4\uB2E4"
+          CoolTime: 0
+          SkillDatas:
+            datas:
+            - Key: RegenDelay
+              Value: 30
+            - Key: RegenHealth
+              Value: 1
+      - Key: 21001
+        Value:
+          ID: 21001
+          Type: "\uD328\uC2DC\uBE0C"
+          Name: "\uD328\uC2DC\uBE0C (\uD0F1\uCEE4)"
+          Description: "\uBC1B\uC740 \uD53C\uD574\uC758 \uC77C\uBD80 \uBC18\uC0AC"
+          CoolTime: 0
+          SkillDatas:
+            datas:
+            - Key: ReflectCoefficient
+              Value: 0.2
+      - Key: 21011
+        Value:
+          ID: 21011
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uC2A4\uD0AC (\uD0F1\uCEE4)"
+          Description: "\uAC70\uB300\uD55C \uBC29\uD328\uB85C \uC801\uC744 \uCCD0\uB0B8\uB2E4."
+          CoolTime: 1.5
+          SkillDatas:
+            datas:
+            - Key: ShieldMovePower
+              Value: 1
+            - Key: ShieldDamage
+              Value: 5
+            - Key: ShieldRemoveMinSpeed
+              Value: 0.5
+            - Key: ShieldKnockbackPower
+              Value: 200
+      - Key: 22001
+        Value:
+          ID: 22001
+          Type: "\uD328\uC2DC\uBE0C"
+          Name: "\uD328\uC2DC\uBE0C(\uC5B4\uC314\uC2E0)"
+          Description: "\uCC98\uC74C\uC73C\uB85C \uACF5\uACA9\uD55C \uC801\uC5D0\uAC8C
+            \uCD94\uAC00 \uD53C\uD574 \uB300\uBBF8\uC9C0\uB97C \uAC00\uD568 ( \uD45C\uC801
+            \uBC14\uAFC0 \uC2DC \uCD08\uAE30\uD654 )"
+          CoolTime: 0
+          SkillDatas:
+            datas:
+            - Key: AdditionalDamage
+              Value: 10
+      - Key: 22011
+        Value:
+          ID: 22011
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uC2A4\uD0AC (\uC5B4\uC314\uC2E0)"
+          Description: "\uD654\uBA74 \uBC94\uC704\uB0B4\uC5D0 \uC788\uB294 \uBAA8\uB4E0
+            \uC801\uC5D0\uAC8C \uACF5\uACA9\uC744 \uAC00\uD55C\uB2E4."
+          CoolTime: 1.5
+          SkillDatas:
+            datas:
+            - Key: Damage
+              Value: 2
+      - Key: 23001
+        Value:
+          ID: 23001
+          Type: "\uD328\uC2DC\uBE0C"
+          Name: "\uD328\uC2DC\uBE0C (\uAD81\uC218)"
+          Description: "\uB300\uC0C1\uC5D0\uAC8C 3\uD0C0\uB9C8\uB2E4\uCD94\uAC00
+            \uD53C\uD574 ( \uD45C\uC801 \uBC14\uAFC0 \uC2DC \uCD08\uAE30\uD654 )"
+          CoolTime: 0
+          SkillDatas:
+            datas:
+            - Key: AdditionalDamage
+              Value: 4
+            - Key: StackCount
+              Value: 3
+      - Key: 23011
+        Value:
+          ID: 23011
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uC2A4\uD0AC (\uAD81\uC218)"
+          Description: "\uD65C\uC744 \uC3F4 \uBC94\uC704 \uB0B4\uC5D0 \uC788\uB294
+            \uBAA8\uB4E0 \uC801\uC744 \uCC98\uCE58\uD55C\uB2E4."
+          CoolTime: 1.5
+          SkillDatas:
+            datas:
+            - Key: ArrowMoveSpeed
+              Value: 10
+            - Key: ArrowDamage
+              Value: 1
+            - Key: ArrowKnockbackPower
+              Value: 100
+            - Key: ArrowMaxDistance
+              Value: 100
+      - Key: 24001
+        Value:
+          ID: 24001
+          Type: "\uD328\uC2DC\uBE0C"
+          Name: "\uD328\uC2DC\uBE0C (\uC11C\uD3EC\uD130)"
+          Description: "\uCCB4\uB825 \uD68C\uBCF5\uB7C9 \uC99D\uAC00(30\uCD08\uC5D0
+            \uD55C \uCE78->30\uCD08\uC5D0 \uB450 \uCE78)"
+          CoolTime: 0
+          SkillDatas:
+            datas:
+            - Key: RegenDelay
+              Value: 30
+            - Key: RegenHealth
+              Value: 1
+      - Key: 24011
+        Value:
+          ID: 24011
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uC2A4\uD0AC (\uC11C\uD3EC\uD130)"
+          Description: "\uBAB8 \uC8FC\uC704\uB97C \uB0A0\uC544\uB2E4\uB2C8\uB294
+            \uAE30\uACC4\uC7A5\uCE58\uB4E4\uB85C \uC801\uB4E4\uC744 \uC591\uB2E8\uB0B8\uB2E4."
+          CoolTime: 1.5
+          SkillDatas:
+            datas:
+            - Key: DroneMovePower
+              Value: 15
+            - Key: DroneDamage
+              Value: 10
+            - Key: DroneRemoveMinSpeed
+              Value: 0.5
+            - Key: DroneSenseRange
+              Value: 5
+      - Key: 30001
+        Value:
+          ID: 30001
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uADFC\uAC70\uB9AC\uB85C\uBD07_\uC2A4\uD0AC"
+          Description: "\uBD09\uC744 \uD718\uB458\uB7EC \uD50C\uB808\uC774\uB7EC\uB97C
+            \uACF5\uACA9\uD55C\uB2E4."
+          CoolTime: 3
+          SkillDatas:
+            datas:
+            - Key: EnemyHitDamage
+              Value: 1
+      - Key: 30002
+        Value:
+          ID: 30002
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uBC29\uC5B4\uD615\uB85C\uBD07_\uC2A4\uD0AC"
+          Description: "\uD50C\uB808\uC774\uC5B4\uC758 \uACF5\uACA9\uC744 \uB9C9\uC544\uB0B4
+            \uAE30\uC874 \uACF5\uACA9\uB7C9\uC758 \uC758 \uD0C0\uACA9\uC744 \uBC1B\uB294\uB2E4"
+          CoolTime: 3
+          SkillDatas:
+            datas:
+            - Key: EnemyDefense
+              Value: 3
+      - Key: 30003
+        Value:
+          ID: 30003
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uC6D0\uAC70\uB9AC\uB85C\uBD07_\uC2A4\uD0AC"
+          Description: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC2DC\uC57C \uC9C4\uC785
+            \uC2DC \uC6D0\uAC70\uB9AC \uACF5\uACA9\uC744 \uC2DC\uC804\uD55C\uB2E4."
+          CoolTime: 2
+          SkillDatas:
+            datas:
+            - Key: EnemyHitDamage
+              Value: 1
+      - Key: 30004
+        Value:
+          ID: 30004
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uBB38\uC9C0\uAE30\uB85C\uBD07_\uC2A4\uD0AC(\uC810\uD504)"
+          Description: "\uD50C\uB808\uC774\uC5B4\uC758 \uC88C\uD45C\uC5D0 \uADFC\uC811\uD558\uAC8C
+            \uC810\uD504\uD558\uC5EC \uC9D3\uBB49\uAC20\uB2E4."
+          CoolTime: 5
+          SkillDatas:
+            datas:
+            - Key: EnemyHitDamage
+              Value: 4
+      - Key: 30005
+        Value:
+          ID: 30005
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uBB38\uC9C0\uAE30\uB85C\uBD07_\uC2A4\uD0AC(\uACF5\uACA9)"
+          Description: "\uD070 \uC8FC\uBA39\uC73C\uB85C \uD50C\uB808\uC774\uC5B4\uB97C
+            \uACF5\uACA9\uD55C\uB2E4"
+          CoolTime: 5
+          SkillDatas:
+            datas:
+            - Key: EnemyHitDamage
+              Value: 2
+      - Key: 30006
+        Value:
+          ID: 30006
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uBB38\uC9C0\uAE30\uB85C\uBD07_\uC2A4\uD0AC(\uBC29\uC5B4)"
+          Description: "\uD50C\uB808\uC774\uC5B4\uC758 \uACF5\uACA9\uC744 \uB9C9\uC544\uB0B8\uB2E4
+            ( \uBCF4\uC2A4 \uCCB4\uB825 40%\uC774\uD558 \uC77C \uC2DC )"
+          CoolTime: 2
+          SkillDatas:
+            datas:
+            - Key: EnemyState
+              Value: 0
