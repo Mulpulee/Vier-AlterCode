@@ -25,8 +25,9 @@ namespace Entity.Components {
 		private PlayerSkillComponent m_skillComponent;
 		private PlayerInteractComponent m_interactComponent;
 		private GroundChecker m_groundCheck;
+        private PlayerAnimationController m_anim;
 
-		private HashSet<InputLock> m_inputLocks;
+        private HashSet<InputLock> m_inputLocks;
 		private bool m_isLocked;
 
 		public IEnumerable<InputLock> Locks => m_inputLocks;
@@ -39,6 +40,7 @@ namespace Entity.Components {
 			m_skillComponent = GetComponent<PlayerSkillComponent>();
 			m_interactComponent = GetComponent<PlayerInteractComponent>();
 			m_groundCheck = GetComponent<GroundChecker>();
+			m_anim = GetComponent<PlayerAnimationController>();
 		}
 
 		private void UpdateLockState() {
@@ -84,7 +86,7 @@ namespace Entity.Components {
 			}
 			if (GameInputManager.GetKey(InputType.MoveRight)) {
 				move.x += 1;
-			}
+            }
 			move.Normalize();
 			m_moveComponent.Move(move);
 
@@ -93,15 +95,17 @@ namespace Entity.Components {
 
 			if (!isGround) {
 				m_moveComponent.StopGravity();
-			}
+            }
 
-			if (!GameInputManager.GetKey(InputType.Jump) && isGround) {
+            if (!GameInputManager.GetKey(InputType.Jump) && isGround) {
 				m_moveComponent.StartGravity();
 			}
 
 			if (GameInputManager.GetKeyDown(InputType.Jump) && isGround) {
 				m_moveComponent.StopGravity();
 				m_moveComponent.Jump();
+				m_anim.IsJumping = true;
+				m_anim.Jump = true;
 			}
 
 			// Skill
@@ -111,8 +115,9 @@ namespace Entity.Components {
 				SkillSlot slot = (SkillSlot)i;
 
 				if (GameInputManager.GetKeyDown(slot)) {
-					m_skillComponent.TryCast(slot);
-				}
+					if (i == start) m_skillComponent.TryCast(slot);
+                    else m_anim.Attack = m_skillComponent.TryCast(slot);
+                }
 			}
 
 			// Interaction

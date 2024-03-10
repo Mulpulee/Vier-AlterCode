@@ -8,11 +8,13 @@ namespace Entity.Components {
 		private Vector2 m_movement;
 		private Rigidbody m_rigidbody;
 		private bool m_isOnGround = true;
+		private SpriteRenderer m_sr;
 
 		public Rigidbody RigidBody => m_rigidbody;
 
 		private void Awake() {
 			m_rigidbody = GetComponent<Rigidbody>();
+			m_sr = GetComponent<SpriteRenderer>();
 		}
 
 		public void StartGravity() {
@@ -37,8 +39,11 @@ namespace Entity.Components {
 
 			if (move.x > 0) {
 				transform.SetFacing2D(Facing2D.Right);
+				m_sr.flipX = false;
+
 			} else if (move.x < 0) {
 				transform.SetFacing2D(Facing2D.Left);
+				m_sr.flipX = true;
 			}
 		}
 
