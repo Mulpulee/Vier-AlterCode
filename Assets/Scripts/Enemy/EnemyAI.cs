@@ -66,7 +66,7 @@ public class EnemyAI : MonoBehaviour
     {
         float dir = target.position.x - transform.position.x;
         dir = (dir < 0) ? -1 : 1;
-        transform.Translate(new Vector2(dir, 0) * enemy.moveSpeed * Time.deltaTime);
+        transform.Translate(new Vector2(dir, 0) * enemy.Status.Speed * Time.deltaTime);
         if (dir == -1)
         {
             enemyAnimator.SetBool("LeftMoving", true);
@@ -99,7 +99,7 @@ public class EnemyAI : MonoBehaviour
         enemyAnimator.SetBool("RightMoving", false);
         enemyAnimator.SetBool("Attacking", true); // 공격 애니메이션 실행
         Debug.Log(enemyAnimator.GetBool("Attacking"));
-        attackDelay = enemy.atkSpeed; // 딜레이 충전
+        attackDelay = enemy.Status.AttackSpeed; // 딜레이 충전
         //target.GetComponent<Player>().nowHp -= enemy.atkDmg;
     }
 }

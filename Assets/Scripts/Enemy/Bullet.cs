@@ -1,3 +1,5 @@
+using Entity.Interface;
+using Entity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +7,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float Speed = 10f;
+    public float damage = 1.0f;
     public Transform target;
     private Vector3 pos;
     private void Start()
@@ -20,4 +23,19 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(pos * Speed * Time.deltaTime);
     }
+
+	private void OnTriggerEnter(Collider other) {
+		if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+			Destroy(gameObject);
+		}
+
+		if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+				return;
+		}
+
+		if (other.TryGetComponent(out IHittable hit)) {
+			hit.OnHit(gameObject, damage, HitType.Normal);
+		    Destroy(gameObject);
+        }
+	}
 }

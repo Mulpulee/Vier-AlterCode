@@ -1034,5 +1034,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: nearEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7148400955866699145, guid: 61c26c243333f2b4e94cc8241d7524b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 61c26c243333f2b4e94cc8241d7524b1, type: 3}

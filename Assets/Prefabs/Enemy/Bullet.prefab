@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2754789888735848281}
   - component: {fileID: 427427110849060930}
-  - component: {fileID: 2601616818053180803}
+  - component: {fileID: -2470620624522963474}
   - component: {fileID: 4041753115261273083}
   m_Layer: 0
   m_Name: Bullet
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2601616818053180803
+--- !u!58 &-2470620624522963474
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,3 +115,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
+  target: {fileID: 0}

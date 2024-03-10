@@ -59,6 +59,5 @@ public class Skill_23011_Arrow : MonoBehaviour {
 		if (other.TryGetComponent(out Rigidbody rigidbody)) {
 			rigidbody.AddForce(Direction * m_knockbackPower, ForceMode.Force);
 		}
-
 	}
 }

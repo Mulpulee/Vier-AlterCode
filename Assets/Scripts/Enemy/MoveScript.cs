@@ -17,14 +17,14 @@ public class MoveScript : MonoBehaviour
     public bool attacked = false;
     public Image nowHpbar;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Weapon")
-        {
-            nowHp -= 5;
-            Destroy(collision.gameObject);
-        }
-    }
+    //private void OnTriggerEnter(Collider2D collision)
+    //{
+    //    if (collision.tag == "Weapon")
+    //    {
+    //        nowHp -= 5;
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
 
     void AttackTrue()
     {
