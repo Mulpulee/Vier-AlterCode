@@ -25,10 +25,8 @@ namespace Utility.SceneManagement {
 
 		}
 		public static bool ExsitScene(string name) {
-			Scene loadingScene = SceneManager.GetSceneByName(LoadingSceneName);
-			bool isExsit = loadingScene != null;
-
-			return isExsit;
+			Scene loadingScene = SceneManager.GetSceneByName(name);
+			return loadingScene.buildIndex != -1;
 		}
 
 		private void Start() {

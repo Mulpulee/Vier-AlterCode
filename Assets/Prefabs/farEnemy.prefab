@@ -122,17 +122,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaed7f7dee19bbb4e80b88242b45322f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: 
-  maxHp: 0
-  nowHp: 0
-  atkDmg: 0
-  atkSpeed: 0
-  moveSpeed: 0
+  m_id: 0
+  m_status:
+    m_name: 
+    m_health:
+      m_value: 20
+    m_healthRegen:
+      m_value: 0
+    m_stamina:
+      m_value: 100
+    m_staminaRegen:
+      m_value: 1
+    m_attack:
+      m_value: 100
+    m_attackSpeed:
+      m_value: 10
+    m_attackCritical:
+      m_value: 100
+    m_defense:
+      m_value: 100
+    m_speed:
+      m_value: 10
+    m_isInvincibility: 0
   atkRange: 0
   fieldOfVision: 0
   nowHpbar: {fileID: 0}
   prfHpBar: {fileID: 2156048012521097205, guid: c4955dea99247b64faa28ddeda10280e, type: 3}
   canvas: {fileID: 0}
+  hpBar: {fileID: 0}
   height: 1.7
   Player: {fileID: 0}
   enemyAnimator: {fileID: 6673714003258053623}
@@ -190,5 +207,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0

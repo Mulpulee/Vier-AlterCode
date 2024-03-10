@@ -17,6 +17,7 @@ namespace Entity.Player {
 		private IDeath m_playerDeath = new EntityDeath();
 		private IHit m_playerHit = new EntityHit();
 
+		public EntityBehaviour Player => m_playerInstance;
 		private EntityBehaviour m_playerInstance;
 		public event Action OnPlayerSpawned;
 

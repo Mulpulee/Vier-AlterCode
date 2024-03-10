@@ -10,12 +10,8 @@ using Utility.Extension;
 using Utility.Management;
 
 public class PlayerMaker : MonoBehaviour {
-	[SerializeField] private EntityBehaviour m_entity;
-	[SerializeField] private EntityBehaviour m_result;
-	[SerializeField] private CanvasGroup m_group;
-
-	private void Start() {
-		
+	private void Awake() {
+		Make();
 	}
 
 	private void Update() {

@@ -37,6 +37,7 @@ public class Enemy : EntityBehaviour {
 
 	void Start() {
 		base.ReInitHandler(new EntityHit(), new EnemyDeath());
+		base.ReInitStatus(new EntityStatus());
 
 		if (prfHpBar != null) {
 			if (canvas != null) {
@@ -86,7 +87,10 @@ public class Enemy : EntityBehaviour {
 
         float nowHp = Status.Health;
         float maxHp = Status.OriginHealth.MaxValue;
-		nowHpbar.fillAmount = nowHp / maxHp;
+
+		if (nowHpbar != null) {
+			nowHpbar.fillAmount = nowHp / maxHp;
+		}
 	}
 
 	// void Die() -> public void OnDeath(EntityBehaviour) in Assets/Scripts/Enemy/EnemyDeath.cs; 

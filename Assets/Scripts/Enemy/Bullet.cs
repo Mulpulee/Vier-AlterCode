@@ -3,6 +3,7 @@ using Entity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Entity.Player;
 
 public class Bullet : MonoBehaviour
 {
@@ -12,7 +13,14 @@ public class Bullet : MonoBehaviour
     private Vector3 pos;
     private void Start()
     {
-        target = GameObject.Find("Player").transform;
+        // old code
+        // target = GameObject.Find("Player").transform;
+
+        EntityBehaviour player = PlayerEvent.Instance.Player;
+        if (player != null) {
+            target = player.transform;
+        }
+        
         float dir = target.position.x - transform.position.x;
         dir = (dir < 0) ? -1 : 1;
         pos = new Vector2(dir, 0);

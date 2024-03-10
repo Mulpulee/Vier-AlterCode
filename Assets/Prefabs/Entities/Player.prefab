@@ -83,10 +83,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_offset: {x: 0, y: -0.32}
-  m_radius: 0.25
+  m_radius: 0.5
   m_groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
 --- !u!212 &7930091268741998592
 SpriteRenderer:
   m_ObjectHideFlags: 0

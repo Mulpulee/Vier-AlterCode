@@ -1,3 +1,5 @@
+using Entity;
+using Entity.Player;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -19,6 +21,12 @@ public class EnemyAI : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         enemyAnimator = enemy.enemyAnimator;
+
+        // Add Code..
+        EntityBehaviour player = PlayerEvent.Instance.Player;
+        if (player != null) {
+            target = player.transform;
+        }
     }
 
     void DecreaseDelay() //µÙ∑π¿Ã∞®º“
