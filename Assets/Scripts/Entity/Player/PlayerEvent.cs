@@ -1,6 +1,7 @@
 using Entity.Basic;
 using Entity.Components;
 using Entity.Interface;
+using EntitySkill;
 using System;
 using System.Linq;
 using System.Xml;
@@ -38,10 +39,10 @@ namespace Entity.Player {
 			OnPlayerSpawned?.Invoke();
 
 			var skillCaster = player.GetComponent<PlayerSkillComponent>();
-			skillCaster.SetSkill(SkillSlot.Slot1, 20001);
-			skillCaster.SetSkill(SkillSlot.Slot2, 21011);
-			skillCaster.SetSkill(SkillSlot.Slot3, 20002);
-			skillCaster.SetSkill(SkillSlot.Slot4, 21001);
+			skillCaster.SetSkill(SkillSlot.Slot1, 10001);
+			skillCaster.SetSkill(SkillSlot.Slot2, 10002);
+			skillCaster.SetSkill(SkillSlot.Slot3, 0);
+			skillCaster.SetSkill(SkillSlot.Slot4, 0);
 		}
 	}
 }

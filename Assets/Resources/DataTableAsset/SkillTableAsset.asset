@@ -19,20 +19,26 @@ MonoBehaviour:
         Value:
           ID: 10001
           Type: "\uC561\uD2F0\uBE0C"
-          Name: "\uACF5\uACA9"
-          Description: "\uB2E8\uAC80\uC744 \uC774\uC6A9\uD574 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4."
-          CoolTime: 0.3
-          SkillDatas:
-            datas: []
-      - Key: 10002
-        Value:
-          ID: 10002
-          Type: "\uC561\uD2F0\uBE0C"
           Name: "\uB9C9\uAE30"
           Description: "\uC801\uC758 \uACF5\uACA9\uC744 \uBC29\uC5B4\uD55C\uB2E4."
           CoolTime: 0.5
           SkillDatas:
-            datas: []
+            datas:
+            - Key: ReductionRate
+              Value: 80
+      - Key: 10002
+        Value:
+          ID: 10002
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uACF5\uACA9"
+          Description: "\uB2E8\uAC80\uC744 \uC774\uC6A9\uD574 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4."
+          CoolTime: 0.3
+          SkillDatas:
+            datas:
+            - Key: Damage
+              Value: 4
+            - Key: Intersection
+              Value: 2
       - Key: 20001
         Value:
           ID: 20001
