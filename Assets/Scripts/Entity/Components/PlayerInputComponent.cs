@@ -78,6 +78,11 @@ namespace Entity.Components {
 				return;
 			}
 
+			if (Entity.Status.IsBind) {
+				m_moveComponent.Move(Vector2.zero);
+				return;
+			}
+
 			// Move
 			Vector2 move = Vector2.zero;
 

@@ -9,7 +9,9 @@ namespace Entity.Basic {
 			}
 
 			if (!entity.Status.IsInvincibility) {
-				entity.Status.Health -= damage;
+				float damageReductionRate = 1.0f - (entity.Status.DamageReductionRate * 0.01f);
+
+				entity.Status.Health -= damage * damageReductionRate;
 			} else {
 				/* Invincibility.. */
 			}

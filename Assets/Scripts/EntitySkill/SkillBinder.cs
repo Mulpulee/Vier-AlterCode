@@ -18,7 +18,6 @@ namespace EntitySkill {
 				return state.Invoke();
 			} else {
 				Debug.LogError($"{ID} is not bind.");
-				Debug.LogError($"{ID} is not bind.");
 				return null;
 			}
 		}

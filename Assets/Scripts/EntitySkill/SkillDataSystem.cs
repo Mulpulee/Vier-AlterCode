@@ -18,6 +18,12 @@ namespace EntitySkill {
 		}
 		public static IEnumerable<SkillTableRow> Values => m_table.Values;
 
+		public static bool IsContainsID(int id) { 
+			if (m_table == null) {
+				Initialize();
+			}
+			return m_table.ContainsID(id);
+		}
 		public static SkillType GetSkillType(int id) {
 			if (m_table == null) {
 				Initialize();

@@ -31,6 +31,12 @@ namespace EntitySkill.Presenter {
 		}
 
 		private void OnSkillUpdate(SkillSlot slot, Skill skill) {
+			if (skill == null) {
+				View.SkillElement[(int)slot].gameObject.SetActive(false);
+				return;
+			}
+			
+			View.SkillElement[(int)slot].gameObject.SetActive(true);
 			View.SkillElement[(int)slot].LoadResource(skill);
 			m_skillByIndex[(int)slot] = skill;
 		}
@@ -44,6 +50,10 @@ namespace EntitySkill.Presenter {
 		private void Update() {
 			for (int i = 0; i < (int)SkillSlot.Count; i++) { 
 				if (m_skillByIndex.TryGetValue(i, out Skill skill)) {
+					if (skill == null) {
+						continue;
+					}
+
 					if (skill.Cooldown.CoolTime == 0.0f && (skill.NowState != SkillState.InUse || skill.Type == SkillType.Passive)) {
 						View.SkillElement[i].SolidImage.fillAmount = 0.0f;
 						continue;

@@ -15,6 +15,24 @@ MonoBehaviour:
   Table:
     m_data:
       datas:
+      - Key: 10001
+        Value:
+          ID: 10001
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uACF5\uACA9"
+          Description: "\uB2E8\uAC80\uC744 \uC774\uC6A9\uD574 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4."
+          CoolTime: 0.3
+          SkillDatas:
+            datas: []
+      - Key: 10002
+        Value:
+          ID: 10002
+          Type: "\uC561\uD2F0\uBE0C"
+          Name: "\uB9C9\uAE30"
+          Description: "\uC801\uC758 \uACF5\uACA9\uC744 \uBC29\uC5B4\uD55C\uB2E4."
+          CoolTime: 0.5
+          SkillDatas:
+            datas: []
       - Key: 20001
         Value:
           ID: 20001
@@ -178,7 +196,7 @@ MonoBehaviour:
           Type: "\uC561\uD2F0\uBE0C"
           Name: "\uBC29\uC5B4\uD615\uB85C\uBD07_\uC2A4\uD0AC"
           Description: "\uD50C\uB808\uC774\uC5B4\uC758 \uACF5\uACA9\uC744 \uB9C9\uC544\uB0B4
-            \uAE30\uC874 \uACF5\uACA9\uB7C9\uC758 \uC758 \uD0C0\uACA9\uC744 \uBC1B\uB294\uB2E4"
+            \uAE30\uC874 \uACF5\uACA9\uB7C9\uC758 3/1\uC758 \uD0C0\uACA9\uC744 \uBC1B\uB294\uB2E4"
           CoolTime: 3
           SkillDatas:
             datas:

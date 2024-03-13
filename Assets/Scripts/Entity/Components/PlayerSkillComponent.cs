@@ -1,6 +1,7 @@
 using EntitySkill;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace Entity.Components {
 	public enum SkillSlot {
@@ -21,9 +22,15 @@ namespace Entity.Components {
 
 		public void SetSkill(SkillSlot slot, int id) {
 			if (m_skillBySlot.TryGetValue(slot, out Skill skill)) {
-				skill.Delete();
+				skill?.Delete();
 			}
 
+			if (!SkillDataSystem.IsContainsID(id)) {
+				m_skillBySlot[slot] = null;
+				OnSkillUpdated?.Invoke(slot, null);
+
+				return;
+			}
 			var newSkill = new Skill(id);
 			newSkill.InformationInitialize(Entity, slot);
 			newSkill.Initialize();
@@ -31,7 +38,7 @@ namespace Entity.Components {
 			m_skillBySlot[slot] = newSkill;
 
 			OnSkillUpdated?.Invoke(slot, newSkill);
-		}
+		} 
 
 		public bool IsSkillChangable(SkillSlot slot) {
 			if (m_skillBySlot.TryGetValue(slot, out Skill skill)) {
@@ -52,7 +59,11 @@ namespace Entity.Components {
 
 		public bool TryCast(SkillSlot slot) {
 			if (m_skillBySlot.TryGetValue(slot, out Skill skill)) {
-				return skill.TryCast(Entity, slot);
+				if (skill != null) {
+					return skill.TryCast(Entity, slot);
+				} else {
+					return false;
+				}
 			}
 
 			return false;
