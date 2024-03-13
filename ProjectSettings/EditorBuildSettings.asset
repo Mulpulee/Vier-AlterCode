@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI/save_ui.unity
     guid: e0ddbc97056f848498b5593aa419e3b4
+  - enabled: 1
+    path: Assets/Scenes/CombineTest.unity
+    guid: 773818766ca2f8b4780a79e2c59e20d0
   m_configObjects: {}
