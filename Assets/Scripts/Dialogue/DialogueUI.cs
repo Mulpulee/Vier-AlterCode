@@ -25,7 +25,6 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
 
     private Int32 m_lastIndex;
     private Coroutine m_printRoutine;
-    private Boolean m_isPrinting;
 
 
     private void Awake()
@@ -115,7 +114,6 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
 
         if (m_selections == null)
         {
-            m_isPrinting = true;
             for (int i = 0; i < m_talkLine.Length; i++)
             {
                 if (m_talkLine[i] == '<')
@@ -147,7 +145,6 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
                 if (m_talkLine[i] == ' ') continue;
                 yield return new WaitForSeconds(0.025f);
             }
-            m_isPrinting = false;
 
             //다 출력하면 스페이스바를 눌러 다음으로
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using Utility.Extension;
 
@@ -13,7 +12,7 @@ public class PlayerAnimationController : MonoBehaviour
     public bool Jump;
 
     private int PlayerType;
-    [SerializeField] private AnimatorController[] m_acs;
+    [SerializeField] private RuntimeAnimatorController[] m_acs;
 
     private Animator m_anim;
     private Rigidbody m_rigid;

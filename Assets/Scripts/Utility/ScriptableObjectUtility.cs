@@ -35,8 +35,8 @@ namespace Utility {
 				AssetDatabase.Refresh();
 				EditorUtility.FocusProjectWindow();
 				Selection.activeObject = asset;
+            }
 #endif
-			}
-		}
-	}
+        }
+    }
 }

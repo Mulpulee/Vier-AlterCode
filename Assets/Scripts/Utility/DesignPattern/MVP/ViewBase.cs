@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using Utility.Extension;
-using static UnityEditor.Progress;
 
 namespace Utility.DesignPattern.MVP {
 	[System.Flags]
