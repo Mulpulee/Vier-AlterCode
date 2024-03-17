@@ -7,9 +7,11 @@ namespace Entity {
 		public static readonly float LimitedAttack				= 100.0f;
 		public static readonly float LimitedAttackSpeed			= 10.0f;
 		public static readonly float LimitedAttackCritical		= 100.0f;
+		public static readonly float LimitedAttackRange			= 50.0f;
 		public static readonly float LimitedDefense				= 100.0f;
 		public static readonly float LimitedDamageReductionRate = 100.0f;
 		public static readonly float LimitedSpeed				= 10.0f;
+		public static readonly float LimitedVision				= 50.0f;
 
 		[SerializeField] private string m_name;
 		[SerializeField] private LimitedValue m_health;
@@ -20,10 +22,12 @@ namespace Entity {
 		[SerializeField] private LimitedValue m_attack;
 		[SerializeField] private LimitedValue m_attackSpeed;
 		[SerializeField] private LimitedValue m_attackCritical;
+		[SerializeField] private LimitedValue m_attackRange;
 
 		[SerializeField] private LimitedValue m_defense;
-		[SerializeField] private LimitedValue m_speed;
 		[SerializeField] private LimitedValue m_damageReductionRate;
+		[SerializeField] private LimitedValue m_speed;
+		[SerializeField] private LimitedValue m_vision;
 		[SerializeField] private bool m_isInvincibility;
 		[SerializeField] private bool m_isBind;
 
@@ -59,17 +63,25 @@ namespace Entity {
 			get => m_attackCritical.Value;
 			set => m_attackCritical.Value = value;
 		}
+		public float AttackRange {
+			get => m_attackRange.Value;
+			set => m_attackRange.Value = value;
+		}
 		public float Defense {
 			get => m_defense.Value;
 			set => m_defense.Value = value;
+		}
+		public float DamageReductionRate {
+			get => m_damageReductionRate.Value;
+			set => m_damageReductionRate.Value = value;
 		}
 		public float Speed {
 			get => m_speed.Value;
 			set => m_speed.Value = value;
 		}
-		public float DamageReductionRate {
-			get => m_damageReductionRate.Value;
-			set => m_damageReductionRate.Value = value;
+		public float Vision {
+			get => m_vision.Value;
+			set => m_vision.Value = value;
 		}
 		public bool IsInvincibility {
 			get => m_isInvincibility;
@@ -87,22 +99,26 @@ namespace Entity {
 		public LimitedValue OriginAttack => m_attack;
 		public LimitedValue OriginAttackSpeed => m_attackSpeed;
 		public LimitedValue OriginAttackCritical => m_attackCritical;
+		public LimitedValue OriginAttackRange => m_attackRange;
 		public LimitedValue OriginDefense => m_defense;
 		public LimitedValue OriginSpeed => m_speed;
+		public LimitedValue OriginVision => m_vision;
 		public LimitedValue OriginDamageReductionRate => m_damageReductionRate;
 
 		public EntityStatus() {
 			m_name = "";
-			m_health				= new LimitedValue(0.0f, 20.0f);
-			m_stamina				= new LimitedValue(0.0f, 100.0f);
+			m_health				= new LimitedValue(0.0f,  20.0f,  20.0f);
+			m_stamina				= new LimitedValue(0.0f, 100.0f, 100.0f);
 			m_healthRegen			= new LimitedValue(0.0f, 100.0f, 0.0f);
 			m_staminaRegen			= new LimitedValue(0.0f, 100.0f, 1.0f);
 
 			m_attack				= new LimitedValue(0.0f, EntityStatus.LimitedAttack);
 			m_attackSpeed			= new LimitedValue(0.0f, EntityStatus.LimitedAttackSpeed);
 			m_attackCritical		= new LimitedValue(0.0f, EntityStatus.LimitedAttackCritical);
+			m_attackRange			= new LimitedValue(0.0f, EntityStatus.LimitedAttackRange);
 			m_defense				= new LimitedValue(0.0f, EntityStatus.LimitedDefense);
 			m_speed					= new LimitedValue(0.0f, EntityStatus.LimitedSpeed);
+			m_vision				= new LimitedValue(0.0f, EntityStatus.LimitedVision);
 			m_damageReductionRate	= new LimitedValue(0.0f, EntityStatus.LimitedDamageReductionRate);
 			m_isInvincibility = false;
 			m_isBind = false;

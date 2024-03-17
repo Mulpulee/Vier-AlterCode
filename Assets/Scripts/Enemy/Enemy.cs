@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,46 +40,47 @@ public class Enemy : EntityBehaviour {
 	}
 
 	void Start() {
-		base.ReInitHandler(new EntityHit(), new EnemyDeath());
-		base.ReInitStatus(new EntityStatus());
+		// This functionality has been moved to EnemyBuilder.cs/Awake().
+		//base.ReInitHandler(new EntityHit(), new EnemyDeath());
+		//base.ReInitStatus(new EntityStatus());
 
-		if (prfHpBar != null) {
-			if (canvas != null) {
-				GameObject hpBarObject = Instantiate(prfHpBar, canvas.transform);
-				this.hpBar = hpBarObject.GetComponent<RectTransform>();
+		//if (prfHpBar != null) {
+		//	if (canvas != null) {
+		//		GameObject hpBarObject = Instantiate(prfHpBar, canvas.transform);
+		//		this.hpBar = hpBarObject.GetComponent<RectTransform>();
 
-			}
-		}
+		//	}
+		//}
 
-		switch (name) {
-			case "nearEnemy":
-				SetEnemyStatus("nearEnemy", 100, 10, 2f, 3, 4f, 14f);  //이름 최대체력 대미지 공격딜레이 이동속도 공격범위 시야범위
-				break;
-			case "hardEnemy":
-				SetEnemyStatus("hardEnemy", 100, 10, 3f, 2, 8f, 12f);
-				break;
-			case "farEnemy":
-				SetEnemyStatus("farEnemy", 100, 10, 5f, 5, 15f, 20f);
-				break;
-		}
+		//switch (name) {
+		//	case "nearEnemy":
+		//		SetEnemyStatus("nearEnemy", 100, 10, 2f, 3, 4f, 14f);  //이름 최대체력 대미지 공격딜레이 이동속도 공격범위 시야범위
+		//		break;
+		//	case "hardEnemy":
+		//		SetEnemyStatus("hardEnemy", 100, 10, 3f, 2, 8f, 12f);
+		//		break;
+		//	case "farEnemy":
+		//		SetEnemyStatus("farEnemy", 100, 10, 5f, 5, 15f, 20f);
+		//		break;
+		//}
 
-		if (hpBar != null) {
-			Transform child = hpBar.transform.GetChild(0);
+		//if (hpBar != null) {
+		//	Transform child = hpBar.transform.GetChild(0);
 
-			if (child != null) {
-				nowHpbar = child.GetComponent<Image>();
-			}
-		} else {
-			Transform parent = transform.parent;
-			string fullName = gameObject.name;
-			while (parent != null) {
-				fullName = $"{parent.name}/{fullName}";
+		//	if (child != null) {
+		//		nowHpbar = child.GetComponent<Image>();
+		//	}
+		//} else {
+		//	Transform parent = transform.parent;
+		//	string fullName = gameObject.name;
+		//	while (parent != null) {
+		//		fullName = $"{parent.name}/{fullName}";
 
-				parent = parent.parent;
-			}
+		//		parent = parent.parent;
+		//	}
 
-			Debug.Log($"HP Bar is Null! (in {fullName})");
-		}
+		//	Debug.Log($"HP Bar is Null! (in {fullName})");
+		//}
 	}
 
 	void Update() {

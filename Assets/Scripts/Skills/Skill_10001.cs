@@ -10,7 +10,7 @@ namespace EntitySkill.Skills {
 		private float m_reductionRate = 90.0f;
 
 		public Skill_10001() {
-			m_reductionRate = SkillDataSystem.GetValue(10002, "ReductionRate");
+			m_reductionRate = SkillDataSystem.GetValue(10001, "ReductionRate");
 		}
 
 		public override void Enter(Skill target) {

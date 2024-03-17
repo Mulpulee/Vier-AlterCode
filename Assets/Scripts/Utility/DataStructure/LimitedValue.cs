@@ -24,7 +24,7 @@ namespace Utility.DataStructure {
 		public void SetMaxValue(Func<float> maxValue) => m_maxValue = maxValue;
 
 		public LimitedValue(float minValue, float maxValue, float setValue = float.MaxValue) : this(() => minValue, () => maxValue, setValue) { }
-		public LimitedValue(Func<float> minValue, Func<float> maxValue, float setValue = float.MaxValue) {
+		public LimitedValue(Func<float> minValue, Func<float> maxValue, float setValue = float.MinValue) {
 			m_minValue = minValue;
 			m_maxValue = maxValue;
 			m_value = Mathf.Clamp(setValue, minValue.Invoke(), maxValue.Invoke());
