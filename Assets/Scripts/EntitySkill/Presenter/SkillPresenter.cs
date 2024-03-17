@@ -54,6 +54,11 @@ namespace EntitySkill.Presenter {
 						continue;
 					}
 
+					if (skill.NowState == SkillState.CustomCooldown) {
+						View.SkillElement[i].SolidImage.fillAmount = skill.CustomCooldown.RemainingTime / skill.CustomCooldown.CoolTime;
+						continue;
+					}
+
 					if (skill.Cooldown.CoolTime == 0.0f && (skill.NowState != SkillState.InUse || skill.Type == SkillType.Passive)) {
 						View.SkillElement[i].SolidImage.fillAmount = 0.0f;
 						continue;
