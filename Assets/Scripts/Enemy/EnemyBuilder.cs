@@ -42,7 +42,7 @@ public class EnemyBuilder : MonoBehaviour {
         m_drawInfo[EnemyType.Near] = new EnemyInfo();
 	}
 
-	private void Awake() {
+	private void Start() {
         Type enemyTypeEnum = typeof(EnemyType);
 
         foreach (CustomKeyValuePair<EnemyType, Vector3> enemy in m_buildEnemys) {

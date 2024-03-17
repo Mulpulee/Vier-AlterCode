@@ -12,9 +12,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : EntityBehaviour {
-	public float atkRange;
-	public float fieldOfVision;
-
 	public Image nowHpbar;
 	public GameObject prfHpBar;
 	public GameObject canvas;
@@ -22,7 +19,6 @@ public class Enemy : EntityBehaviour {
 	public RectTransform hpBar;
 	public float height = 1.7f;
 
-	public EntityBehaviour Player;
 	public Animator enemyAnimator;
 
 
@@ -33,8 +29,6 @@ public class Enemy : EntityBehaviour {
 		Status.Attack = _atkDmg;
 		Status.AttackSpeed = _atkSpeed;
 		Status.Speed = _moveSpeed;
-		atkRange = _atkRange;
-		fieldOfVision = _fieldOfVision;
 		Status.Defense = 0;
 		Status.DamageReductionRate = 0;
 	}

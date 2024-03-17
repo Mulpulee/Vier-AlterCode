@@ -41,18 +41,18 @@ public class EnemyAI : MonoBehaviour
         float distance = Vector3.Distance(transform.position, target.position);
 
         //시야 범위안에 들어올 때
-        if (distance <= enemy.fieldOfVision)
+        if (distance <= enemy.Status.Vision)
         {
             FaceTarget(); // 타겟 바라보기
             //쿨타임이 0이고 공격 범위 안에 들어왔으면
-            if (attackDelay == 0 && distance <= enemy.atkRange)
+            if (attackDelay == 0 && distance <= enemy.Status.AttackRange)
             {
                 AttackTarget();
             }
             else
             {
                 enemyAnimator.SetBool("Attacking", false);
-                if ( distance >= enemy.atkRange && !enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                if ( distance >= enemy.Status.AttackRange && !enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                 {
                     MoveToTarget();
                 }
