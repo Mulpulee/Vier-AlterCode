@@ -32,6 +32,11 @@ namespace EntitySkill.Skills {
 				minDistance = Vector3.Distance(target.Caster.Position, colliders[0].transform.position);
 			}
 
+			if (closeCollider == null) {
+				target.ChangeState(SkillState.Cooldown);
+				return;
+			}
+
 			foreach(Collider collider in colliders) {
 				float distance = Vector3.Distance(target.Caster.Position, collider.transform.position);
 				if (distance < minDistance) {
@@ -47,7 +52,7 @@ namespace EntitySkill.Skills {
 					minDistance = distance;
 				}
 			}
-
+			
 			if (closeCollider.TryGetComponent(out EntityBehaviour behaviour)) {
 				behaviour.OnHit(target.Caster.gameObject, m_damage, Entity.Interface.HitType.Normal);
 			}

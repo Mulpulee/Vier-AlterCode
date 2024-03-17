@@ -19,6 +19,7 @@ namespace EntitySkill.Skills {
 		public override void Enter(Skill target) {
 			List<EntityBehaviour> entitys = GameObject.FindObjectsOfType<EntityBehaviour>().ToList();
 			EntityBehaviour player = entitys.Find((EntityBehaviour entity) => entity.TryGetComponent(out PlayerInputComponent input));
+			entitys.Remove(player);
 
 			GameObject playerObject = null;
 			if (player != null) {

@@ -19,6 +19,10 @@ namespace EntitySkill.State {
 			m_coolTime = SkillDataSystem.GetCoolTime(id);
 			m_isRepeat = isRepeat;
 		}
+		public SkillCooldown(float time) {
+			m_coolTime = time;
+			m_isRepeat = false;
+		}
 		public override void Enter(Skill target) {
 			m_maxCoolTime = m_coolTime;
 			m_remainingTime = m_maxCoolTime;

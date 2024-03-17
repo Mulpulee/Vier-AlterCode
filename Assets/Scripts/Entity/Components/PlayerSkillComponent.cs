@@ -1,7 +1,7 @@
 using EntitySkill;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using EntitySkill.State;
 
 namespace Entity.Components {
 	public enum SkillSlot {
@@ -38,6 +38,7 @@ namespace Entity.Components {
 			m_skillBySlot[slot] = newSkill;
 
 			OnSkillUpdated?.Invoke(slot, newSkill);
+			newSkill.ChangeState(SkillState.CustomCooldown);
 		} 
 
 		public bool IsSkillChangable(SkillSlot slot) {

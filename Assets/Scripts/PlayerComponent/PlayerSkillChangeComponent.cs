@@ -16,30 +16,40 @@ namespace Entity.Components {
 
 		public void Update() {
 			if (GameInputManager.GetKeyDown(InputType.FormSlot1)) {
-				m_skillNumber = 0;
-				m_isChanged = true;
-				m_anim.ChangeForm(m_skillNumber);
+				if (m_skillNumber != 0) {
+					m_skillNumber = 0;
+					m_isChanged = true;
+					m_anim.ChangeForm(m_skillNumber);
+				}
 			}
 			if (GameInputManager.GetKeyDown(InputType.FormSlot2)) {
-				m_skillNumber = 1;
-				m_isChanged = true;
-				m_anim.ChangeForm(m_skillNumber);
+				if (m_skillNumber != 1) {
+					m_skillNumber = 1;
+					m_isChanged = true;
+					m_anim.ChangeForm(m_skillNumber);
+				}
 			}
 			if (GameInputManager.GetKeyDown(InputType.FormSlot3)) {
-				m_skillNumber = 2;
-				m_isChanged = true;
-                m_anim.ChangeForm(m_skillNumber);
-            }
+				if (m_skillNumber != 2) {
+					m_skillNumber = 2;
+					m_isChanged = true;
+					m_anim.ChangeForm(m_skillNumber);
+				}
+			}
 			if (GameInputManager.GetKeyDown(InputType.FormSlot4)) {
-				m_skillNumber = 3;
-				m_isChanged = true;
-                m_anim.ChangeForm(m_skillNumber);
-            }
+				if (m_skillNumber != 3) {
+					m_skillNumber = 3;
+					m_isChanged = true;
+					m_anim.ChangeForm(m_skillNumber);
+				}
+			}
 			if (GameInputManager.GetKeyDown(InputType.FormSlot5)) {
-				m_skillNumber = 4;
-				m_isChanged = true;
-                m_anim.ChangeForm(m_skillNumber);
-            }
+				if (m_skillNumber != 4) {
+					m_skillNumber = 4;
+					m_isChanged = true;
+					m_anim.ChangeForm(m_skillNumber);
+				}
+			}
 
 			if (m_isChanged) {
 				if (m_skillNumber != 0) {
