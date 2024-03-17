@@ -16,6 +16,7 @@ public class NearAttack : MonoBehaviour {
 		}
 
 		if (other.TryGetComponent(out IHittable hit)) {
+			Debug.Log("Hit!");
 			hit.OnHit(gameObject, damage, HitType.Normal);
 		}
 	}

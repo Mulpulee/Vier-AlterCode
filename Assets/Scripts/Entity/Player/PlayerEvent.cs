@@ -24,6 +24,12 @@ namespace Entity.Player {
 
 		[ContextMenu("Spawn")]
 		public void Spawn() {
+			var status = new EntityStatus("Player", 20, 10, 1, 1, 0, 0, 10.0f) {
+				Speed = 10.0f,
+				Defense = 0,
+				DamageReductionRate = 0
+			};
+
 			EntityBehaviour player = EntityBehaviour.GetBuilder(m_playerPrefab, Vector2.zero)
 			.AddEntityComponent<PlayerMoveComponent>()
 			.AddEntityComponent<PlayerSkillComponent>()
@@ -32,6 +38,7 @@ namespace Entity.Player {
 			.AddEntityComponent<PlayerSkillChangeComponent>()
 			.SetHit(new EntityHit())
 			.SetDeath(new EntityDeath())
+			.SetStatus(status)
 			.Build();
 
 			m_playerInstance = player;

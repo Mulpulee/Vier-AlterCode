@@ -12,6 +12,7 @@ public class PlayerHpDisplayer : MonoBehaviour {
     {
         EntityBehaviour player = PlayerEvent.Instance.Player;
         if (player == null) {
+            m_image.fillAmount = 0.0f;
             return;
         }
 

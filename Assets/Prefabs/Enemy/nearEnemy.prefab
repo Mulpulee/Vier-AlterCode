@@ -168,19 +168,23 @@ MonoBehaviour:
       m_value: 10
     m_attackCritical:
       m_value: 100
+    m_attackRange:
+      m_value: 50
     m_defense:
+      m_value: 100
+    m_damageReductionRate:
       m_value: 100
     m_speed:
       m_value: 10
+    m_vision:
+      m_value: 50
     m_isInvincibility: 0
-  atkRange: 0
-  fieldOfVision: 0
+    m_isBind: 0
   nowHpbar: {fileID: 0}
   prfHpBar: {fileID: 2156048012521097205, guid: c4955dea99247b64faa28ddeda10280e, type: 3}
   canvas: {fileID: 0}
   hpBar: {fileID: 0}
   height: 1.7
-  Player: {fileID: 0}
   enemyAnimator: {fileID: 7148400955331758390}
 --- !u!114 &7148400955331758391
 MonoBehaviour:
@@ -207,6 +211,7 @@ GameObject:
   - component: {fileID: 7148400955866699144}
   - component: {fileID: 7148400955866699142}
   - component: {fileID: 3148461606200726548}
+  - component: {fileID: 5114481600621615279}
   m_Layer: 9
   m_Name: Weapon
   m_TagString: Weapon
@@ -294,3 +299,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 1.0000006, z: 0.2}
   m_Center: {x: 0.00000011920929, y: 0.00000023841858, z: 0}
+--- !u!114 &5114481600621615279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148400955866699147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4faaa8fd1d9b3e540b62da4341e0b310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4

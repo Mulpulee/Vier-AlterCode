@@ -1,5 +1,6 @@
 using Entity;
 using Entity.Player;
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -36,6 +37,10 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        if (target == null) {
+            return;
+        }
+
         Invoke("DecreaseDelay", 1f);
         // 타겟과 자신의 거리를 확인
         float distance = Vector3.Distance(transform.position, target.position);
