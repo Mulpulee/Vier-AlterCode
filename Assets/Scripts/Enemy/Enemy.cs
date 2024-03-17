@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Entity.Basic;
+using Entity.Interface;
 using JetBrains.Annotations;
 using System;
 using System.Collections;
@@ -33,6 +34,8 @@ public class Enemy : EntityBehaviour {
 		Status.Speed = _moveSpeed;
 		atkRange = _atkRange;
 		fieldOfVision = _fieldOfVision;
+		Status.Defense = 0;
+		Status.DamageReductionRate = 0;
 	}
 
 	void Start() {
@@ -49,44 +52,44 @@ public class Enemy : EntityBehaviour {
 
 		switch (name) {
 			case "nearEnemy":
-				SetEnemyStatus("nearEnemy", 100, 10, 2f, 3, 1.5f, 14f);  //이름 최대체력 대미지 공격딜레이 이동속도 공격범위 시야범위
+				SetEnemyStatus("nearEnemy", 100, 10, 2f, 3, 4f, 14f);  //이름 최대체력 대미지 공격딜레이 이동속도 공격범위 시야범위
 				break;
 			case "hardEnemy":
-				SetEnemyStatus("hardEnemy", 100, 10, 3f, 2, 4f, 12f);
+				SetEnemyStatus("hardEnemy", 100, 10, 3f, 2, 8f, 12f);
 				break;
 			case "farEnemy":
-				SetEnemyStatus("farEnemy", 100, 10, 5f, 5, 10f, 20f);
+				SetEnemyStatus("farEnemy", 100, 10, 5f, 5, 15f, 20f);
 				break;
 		}
 
 		if (hpBar != null) {
-            Transform child = hpBar.transform.GetChild(0);
+			Transform child = hpBar.transform.GetChild(0);
 
-            if (child != null) {
-			    nowHpbar = child.GetComponent<Image>();
-            }
-        } else {
-            Transform parent = transform.parent;
-            string fullName = gameObject.name;
-            while (parent != null) {
-                fullName = $"{parent.name}/{fullName}";
+			if (child != null) {
+				nowHpbar = child.GetComponent<Image>();
+			}
+		} else {
+			Transform parent = transform.parent;
+			string fullName = gameObject.name;
+			while (parent != null) {
+				fullName = $"{parent.name}/{fullName}";
 
-                parent = parent.parent;
-            }
+				parent = parent.parent;
+			}
 
-            Debug.Log($"HP Bar is Null! (in {fullName})");
-        }
+			Debug.Log($"HP Bar is Null! (in {fullName})");
+		}
 	}
 
 	void Update() {
 		Vector3 _hpBarPos = Camera.main.WorldToScreenPoint
 			(new Vector3(transform.position.x, transform.position.y + height, 0));
-        if (hpBar != null) { 
-		    hpBar.position = _hpBarPos;
-        }
+		if (hpBar != null) {
+			hpBar.position = _hpBarPos;
+		}
 
-        float nowHp = Status.Health;
-        float maxHp = Status.OriginHealth.MaxValue;
+		float nowHp = Status.Health;
+		float maxHp = Status.OriginHealth.MaxValue;
 
 		if (nowHpbar != null) {
 			nowHpbar.fillAmount = nowHp / maxHp;
