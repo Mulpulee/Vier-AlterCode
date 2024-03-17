@@ -6,6 +6,6 @@ public class DialogueTester : MonoBehaviour
 {
     private void Start()
     {
-        DialogueManager.Instance.RunDialog("Dialogue_Example");
+        DialogueManager.Instance.RunDialog("Dialogue_0002");
     }
 }

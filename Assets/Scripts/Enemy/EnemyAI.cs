@@ -52,7 +52,7 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 enemyAnimator.SetBool("Attacking", false);
-                if ( distance >=2 && !enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+                if ( distance >= enemy.atkRange && !enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
                 {
                     MoveToTarget();
                 }

@@ -49,13 +49,13 @@ public class Enemy : EntityBehaviour {
 
 		switch (name) {
 			case "nearEnemy":
-				SetEnemyStatus("nearEnemy", 100, 10, 2f, 3, 4f, 14f);  //이름 최대체력 대미지 공격딜레이 이동속도 공격범위 시야범위
+				SetEnemyStatus("nearEnemy", 100, 10, 2f, 3, 1.5f, 14f);  //이름 최대체력 대미지 공격딜레이 이동속도 공격범위 시야범위
 				break;
 			case "hardEnemy":
-				SetEnemyStatus("hardEnemy", 100, 10, 3f, 2, 8f, 12f);
+				SetEnemyStatus("hardEnemy", 100, 10, 3f, 2, 4f, 12f);
 				break;
 			case "farEnemy":
-				SetEnemyStatus("farEnemy", 100, 10, 5f, 5, 15f, 20f);
+				SetEnemyStatus("farEnemy", 100, 10, 5f, 5, 10f, 20f);
 				break;
 		}
 

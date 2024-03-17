@@ -62,6 +62,7 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
 
     public void BeginPrint()
     {
+        m_dialogueBox.SetActive(true);
         HideAllButtons();
     }
 
@@ -75,7 +76,7 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
 
     public void EndPrint()
     {
-
+        m_dialogueBox.SetActive(false);
     }
 
 
