@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6308634064911058018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.67, y: -1.72, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -138,19 +138,23 @@ MonoBehaviour:
       m_value: 10
     m_attackCritical:
       m_value: 100
+    m_attackRange:
+      m_value: 50
     m_defense:
+      m_value: 100
+    m_damageReductionRate:
       m_value: 100
     m_speed:
       m_value: 10
+    m_vision:
+      m_value: 50
     m_isInvincibility: 0
-  atkRange: 0
-  fieldOfVision: 0
+    m_isBind: 0
   nowHpbar: {fileID: 0}
   prfHpBar: {fileID: 2156048012521097205, guid: c4955dea99247b64faa28ddeda10280e, type: 3}
   canvas: {fileID: 0}
   hpBar: {fileID: 0}
   height: 1.7
-  Player: {fileID: 0}
   enemyAnimator: {fileID: 6308634064911058029}
 --- !u!114 &6308634064911058024
 MonoBehaviour:
