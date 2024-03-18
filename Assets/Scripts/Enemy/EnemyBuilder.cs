@@ -68,7 +68,7 @@ public class EnemyBuilder : MonoBehaviour {
 					enemyStatus.Attack = 10.0f;
 					enemyStatus.AttackSpeed = 5.0f;
 					enemyStatus.Speed = 5.0f;
-					enemyStatus.AttackRange = 15.0f;
+					enemyStatus.AttackRange = 12.0f;
 					enemyStatus.Vision = 20.0f;
 
                     enemyStatus.Defense = 0.0f;
@@ -80,7 +80,7 @@ public class EnemyBuilder : MonoBehaviour {
 					enemyStatus.Attack = 10.0f;
 					enemyStatus.AttackSpeed = 3.0f;
 					enemyStatus.Speed = 2.0f;
-					enemyStatus.AttackRange = 8.0f;
+					enemyStatus.AttackRange = 4.0f;
 					enemyStatus.Vision = 12.0f;
 
 					enemyStatus.Defense = 0.0f;
@@ -92,7 +92,7 @@ public class EnemyBuilder : MonoBehaviour {
                     enemyStatus.Attack = 10.0f;
                     enemyStatus.AttackSpeed = 2.0f;
                     enemyStatus.Speed = 3.0f;
-                    enemyStatus.AttackRange = 4.0f;
+                    enemyStatus.AttackRange = 1.5f;
                     enemyStatus.Vision = 14.0f;
 
 					enemyStatus.Defense = 0.0f;
