@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParallaxMoving : MonoBehaviour
 {
     [SerializeField] private Vector2 parallaxEffectMultiplier;  //딜레이
+    [SerializeField] private float z = 2;                     //Z축 고정
     [SerializeField] private bool infiniteHorizontal;           //X축 반복
     [SerializeField] private bool infiniteVertical;             //Y축 반복
 
@@ -30,14 +31,14 @@ public class ParallaxMoving : MonoBehaviour
         Vector3 deltaMovement = pTransform.position - lastPosition;
         transform.position += deltaMovement;
         lastPosition = pTransform.position;
-        transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, deltaMovement.y * parallaxEffectMultiplier.x);
+        transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, deltaMovement.y * parallaxEffectMultiplier.y, z);
 
         if (infiniteHorizontal)
         {
             if (Mathf.Abs(pTransform.position.x - transform.position.x) >= textureUnitSizeX)
             {
                 float offsetPositionX = (pTransform.position.x - transform.position.x) % textureUnitSizeX;
-                transform.position = new Vector3(pTransform.position.x + offsetPositionX, transform.position.y);
+                transform.position = new Vector3(pTransform.position.x + offsetPositionX, transform.position.y, z);
             }
         }
 
@@ -46,7 +47,7 @@ public class ParallaxMoving : MonoBehaviour
             if (Mathf.Abs(pTransform.position.y - transform.position.y) >= textureUnitSizeY)
             {
                 float offsetPositionY = (pTransform.position.y - transform.position.y) % textureUnitSizeY;
-                transform.position = new Vector3(transform.position.x, pTransform.position.y + offsetPositionY);
+                transform.position = new Vector3(transform.position.x, pTransform.position.y + offsetPositionY, z);
             }
         }
     }
