@@ -106,11 +106,12 @@ namespace Entity.Components {
 				m_moveComponent.StartGravity();
 			}
 
-			if (GameInputManager.GetKeyDown(InputType.Jump) && isGround) {
-				m_moveComponent.StopGravity();
+			if (GameInputManager.GetKeyDown(InputType.Jump) && isGround)
+            {
+                m_anim.IsJumping = true;
+                m_anim.Jump = true;
+                m_moveComponent.StopGravity();
 				m_moveComponent.Jump();
-				m_anim.IsJumping = true;
-				m_anim.Jump = true;
 			}
 
 			// Skill

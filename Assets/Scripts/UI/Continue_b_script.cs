@@ -14,6 +14,6 @@ public class Continue_b_script : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("save_ui");
+        //SceneManager.LoadScene("save_ui");
     }
 }

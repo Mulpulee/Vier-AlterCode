@@ -1918,7 +1918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2076411468967723132, guid: f2c008b135429a34a9921a1a2c6309cc, type: 3}
       propertyPath: m_buildEnemys.Array.data[0].Value.y
-      value: -1.4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2076411468967723132, guid: f2c008b135429a34a9921a1a2c6309cc, type: 3}
       propertyPath: m_buildEnemys.Array.data[1].Value.x
@@ -1926,7 +1926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2076411468967723132, guid: f2c008b135429a34a9921a1a2c6309cc, type: 3}
       propertyPath: m_buildEnemys.Array.data[1].Value.y
-      value: -1.4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2076411468967723133, guid: f2c008b135429a34a9921a1a2c6309cc, type: 3}
       propertyPath: m_RootOrder

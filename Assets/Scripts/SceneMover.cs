@@ -5,7 +5,7 @@ using Utility.SceneManagement;
 
 public class SceneMover : MonoBehaviour {
 	public static void GameLoad() {
-		SceneLoader.LoadScene("CombineTest");
+		SceneLoader.LoadScene("FirstMapScene");
 	}
 
 	public static void GameExit() {

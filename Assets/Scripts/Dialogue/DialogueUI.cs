@@ -77,6 +77,7 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
     public void EndPrint()
     {
         m_dialogueBox.SetActive(false);
+        GameManagerEx.Instance.GoToFirstScene();
     }
 
 
@@ -144,7 +145,7 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
 
                 m_talkLineText.text += m_talkLine[i];
                 if (m_talkLine[i] == ' ') continue;
-                yield return new WaitForSeconds(0.025f);
+                yield return new WaitForSeconds(0.05f);
             }
 
             //다 출력하면 스페이스바를 눌러 다음으로
