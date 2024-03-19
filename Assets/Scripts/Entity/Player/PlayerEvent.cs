@@ -24,7 +24,7 @@ namespace Entity.Player {
 
 		[ContextMenu("Spawn")]
 		public void Spawn() {
-			var status = new EntityStatus("Player", 20, 10, 1, 1, 0, 0, 10.0f) {
+			var status = new EntityStatus("Player", 20, 50, 5, 1, 0, 0, 10.0f) {
 				Speed = 10.0f,
 				Defense = 0,
 				DamageReductionRate = 0

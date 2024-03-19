@@ -11,11 +11,15 @@ public class MoveCamera : MonoBehaviour
     public float minY = -10f;                //y축 최소
     public float maxY = 10f;                //y축 최대
 
+    public bool PlayerforInitialTarget = false;
+
     Transform this_transform;            // 카메라의 좌표
     Transform Target_transform;         // 타겟의 좌표
 
     void Start()
     {
+        if (PlayerforInitialTarget) Target = FindObjectOfType<PlayerAnimationController>().gameObject;
+
         this_transform = GetComponent<Transform>();
         Target_transform = Target.GetComponent<Transform>();
     }

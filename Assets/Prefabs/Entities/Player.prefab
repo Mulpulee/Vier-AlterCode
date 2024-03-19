@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7930091268741999613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: -20, y: 1, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -54,9 +54,9 @@ MonoBehaviour:
   m_status:
     m_name: 
     m_health:
-      m_value: 20
+      m_value: 50
     m_healthRegen:
-      m_value: 0
+      m_value: 1
     m_stamina:
       m_value: 100
     m_staminaRegen:
@@ -67,11 +67,18 @@ MonoBehaviour:
       m_value: 10
     m_attackCritical:
       m_value: 100
+    m_attackRange:
+      m_value: 50
     m_defense:
+      m_value: 100
+    m_damageReductionRate:
       m_value: 100
     m_speed:
       m_value: 5
+    m_vision:
+      m_value: 50
     m_isInvincibility: 0
+    m_isBind: 0
 --- !u!114 &7930091268741998599
 MonoBehaviour:
   m_ObjectHideFlags: 0
