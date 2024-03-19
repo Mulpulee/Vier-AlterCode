@@ -1,10 +1,7 @@
 using Entity.Basic;
 using Entity.Components;
 using Entity.Interface;
-using EntitySkill;
 using System;
-using System.Linq;
-using System.Xml;
 using UnityEngine;
 using Utility.DesignPattern;
 
@@ -23,14 +20,14 @@ namespace Entity.Player {
 		public event Action OnPlayerSpawned;
 
 		[ContextMenu("Spawn")]
-		public void Spawn() {
+		public void Spawn(Vector3 position) {
 			var status = new EntityStatus("Player", 20, 50, 5, 1, 0, 0, 10.0f) {
 				Speed = 10.0f,
 				Defense = 0,
 				DamageReductionRate = 0
 			};
 
-			EntityBehaviour player = EntityBehaviour.GetBuilder(m_playerPrefab, Vector2.zero)
+			EntityBehaviour player = EntityBehaviour.GetBuilder(m_playerPrefab, position)
 			.AddEntityComponent<PlayerMoveComponent>()
 			.AddEntityComponent<PlayerSkillComponent>()
 			.AddEntityComponent<PlayerInteractComponent>()

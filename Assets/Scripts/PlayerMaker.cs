@@ -20,6 +20,6 @@ public class PlayerMaker : MonoBehaviour {
 
 	[ContextMenu("Make")]
 	public void Make() {
-		PlayerEvent.Instance.Spawn();
+		PlayerEvent.Instance.Spawn(transform.position);
 	}
 }
