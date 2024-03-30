@@ -10,12 +10,14 @@ using Utility.Management;
 namespace EntitySkill.Skills {
 	public class Skill_23001 : FSMState<Skill> {
 		private float m_additionalDamage = 10.0f;
+		private float m_additionalDamageRate = 10.0f;
 		private float m_stackCount = 3;
 
 		private int m_count = 0;
 
 		public Skill_23001() {
 			m_additionalDamage = SkillDataSystem.GetValue(23001, "AdditionalDamage");
+            m_additionalDamageRate = SkillDataSystem.GetValue(23001, "AdditionalDamageRate");
 			m_stackCount = SkillDataSystem.GetValue(23001, "StackCount");
 		}
 
@@ -31,7 +33,8 @@ namespace EntitySkill.Skills {
 				EntityBehaviour last = normalData.entity;
 
 				if (last != null) {
-					last.OnHit(null, m_additionalDamage, HitType.Skill);
+					float damage = (target.Caster.Status.Attack * m_additionalDamageRate) + m_additionalDamage;
+					last.OnHit(null, damage, HitType.Skill);
 				}
 			}
 		}

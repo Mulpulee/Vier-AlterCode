@@ -11,6 +11,7 @@ namespace EntitySkill.Skills {
 
 		private float m_droneSenseRange = 5.0f;
 		private float m_droneDamage = 10.0f;
+		private float m_droneDamageRate = 10.0f;
 		private float m_droneMovePower = 15.0f;
 		private float m_droneRemoveMinSpeed = 0.5f;
 
@@ -18,6 +19,7 @@ namespace EntitySkill.Skills {
 		public Skill_24011() {
 			m_droneSenseRange = SkillDataSystem.GetValue(24011, "DroneSenseRange");
 			m_droneDamage = SkillDataSystem.GetValue(24011, "DroneDamage");
+            m_droneDamageRate = SkillDataSystem.GetValue(24011, "DroneDamageRate");
 			m_droneMovePower = SkillDataSystem.GetValue(24011, "DroneMovePower");
 			m_droneRemoveMinSpeed = SkillDataSystem.GetValue(24011, "DroneRemoveMinSpeed");
 		}
@@ -26,7 +28,9 @@ namespace EntitySkill.Skills {
 			if (Skill_24011.m_drone == null) {
 				Skill_24011.m_drone = ResourceLoader.SkillObjectLoad<Skill_24011_Drone>("Skill_24011_Drone");
 
-				Skill_24011.m_drone.SetDamage(m_droneDamage);
+				float damage = (target.Caster.Status.Attack * m_droneDamageRate) + m_droneDamage;
+
+				Skill_24011.m_drone.SetDamage(damage);
 				Skill_24011.m_drone.SetSenseRange(m_droneSenseRange);
 				Skill_24011.m_drone.SetMovePower(m_droneMovePower);
 				Skill_24011.m_drone.SetRemoveMinSpeed(m_droneRemoveMinSpeed);

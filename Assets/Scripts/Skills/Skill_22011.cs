@@ -11,9 +11,11 @@ using Utility.Management;
 namespace EntitySkill.Skills {
 	public class Skill_22011 : FSMState<Skill> {
 		private float m_damage;
+		private float m_damageRate;
 		
 		public Skill_22011() {
 			m_damage = SkillDataSystem.GetValue(22011, "Damage");
+            m_damageRate = SkillDataSystem.GetValue(22011, "DamageRate");
 		}
 
 		public override void Enter(Skill target) {
@@ -26,7 +28,8 @@ namespace EntitySkill.Skills {
 				playerObject = player.gameObject;
 			}
 			foreach (EntityBehaviour entity in entitys) {
-                entity.OnHit(playerObject, m_damage, HitType.Skill);
+				float damage = (target.Caster.Status.Attack * m_damageRate) + m_damage;
+                entity.OnHit(playerObject, damage, HitType.Skill);
 			}
 
 			target.ChangeState(SkillState.Cooldown);

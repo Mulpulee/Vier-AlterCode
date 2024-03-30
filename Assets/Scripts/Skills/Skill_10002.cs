@@ -10,11 +10,13 @@ using Utility.Management;
 
 namespace EntitySkill.Skills {
 	public class Skill_10002 : FSMState<Skill> {
-		private float m_intersection = 2.0f;
-		private float m_damage = 2.0f;
+		private float m_intersection = 0.0f;
+		private float m_damage = 0.0f;
+		private float m_damageRate = 0.0f;
 
 		public Skill_10002() {
 			m_damage = SkillDataSystem.GetValue(10002, "Damage");
+			m_damageRate = SkillDataSystem.GetValue(10002, "DamageRate");
 			m_intersection = SkillDataSystem.GetValue(10002, "Intersection");
 		}
 
@@ -54,7 +56,9 @@ namespace EntitySkill.Skills {
 			}
 			
 			if (closeCollider.TryGetComponent(out EntityBehaviour behaviour)) {
-				behaviour.OnHit(target.Caster.gameObject, m_damage, Entity.Interface.HitType.Normal);
+				float damage = (target.Caster.Status.Attack * m_damageRate) + m_damage;
+
+                behaviour.OnHit(target.Caster.gameObject, damage, Entity.Interface.HitType.Normal);
 			}
 
 			target.ChangeState(SkillState.Cooldown);
