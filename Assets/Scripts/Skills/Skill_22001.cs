@@ -28,7 +28,7 @@ namespace EntitySkill.Skills {
 			EntityBehaviour entity = target.Caster.NormalHitData.lastAttack.entity;
 			if (entity != m_lastAttackEntity) {
 				float damage = (target.Caster.Status.Attack * m_additionalDamageRate) + m_additionalDamage;
-				entity.OnHit(target.Caster.gameObject, m_additionalDamage, HitType.Skill);
+				entity.OnHit(target.Caster.gameObject, damage, HitType.Skill);
 
 				m_lastAttackEntity = entity;
 			}

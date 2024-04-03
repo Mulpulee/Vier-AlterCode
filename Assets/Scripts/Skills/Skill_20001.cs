@@ -10,6 +10,9 @@ namespace EntitySkill.Skills {
 		private float m_invincibilityTime = 0.5f;
 
 		private float m_curTime = 0.0f;
+		private Facing2D m_facing = (Facing2D)0;
+		private Rigidbody m_rigidBody = null;
+		private float m_deltaTime = 0.0f;
 
 		public Skill_20001() {
 			m_movePower = SkillDataSystem.GetValue(20001, "MovePower");
@@ -18,13 +21,15 @@ namespace EntitySkill.Skills {
 
 		public override void Enter(Skill target) {
 			if (target.Caster.TryGetComponent(out PlayerMoveComponent entityMove)) {
-				Facing2D facing = target.Caster.transform.GetFacing2D();
-				entityMove.RigidBody.AddForce((int)facing * m_movePower * Vector3.right, ForceMode.VelocityChange);
+                m_facing = target.Caster.transform.GetFacing2D();
+				m_rigidBody = entityMove.RigidBody;
 			}
 			target.Caster.Status.IsInvincibility = true;
 
 			m_curTime = m_invincibilityTime;
-		}
+			m_deltaTime = 1.0f / m_invincibilityTime;
+
+        }
 
 		public override void Update(Skill target) {
 			if (m_curTime <= 0.0f) {
@@ -32,8 +37,11 @@ namespace EntitySkill.Skills {
 
 				target.ChangeState(SkillState.Cooldown);
 			}
+			if (m_rigidBody != null) {
+				m_rigidBody.AddForce((float)m_facing * m_deltaTime * m_movePower * Vector3.right, ForceMode.Acceleration);
+			}
 
-			m_curTime -= TimeManager.DeltaTime;
+            m_curTime -= TimeManager.DeltaTime;
 		}
 		public override void FixedUpdate(Skill target) { 
 		

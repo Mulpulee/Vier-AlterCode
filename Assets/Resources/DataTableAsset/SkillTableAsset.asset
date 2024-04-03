@@ -37,6 +37,8 @@ MonoBehaviour:
             datas:
             - Key: Damage
               Value: 4
+            - Key: DamageRate
+              Value: 4
             - Key: Intersection
               Value: 2
       - Key: 20001
@@ -46,13 +48,13 @@ MonoBehaviour:
           Name: "\uB300\uC26C"
           Description: "\uB300\uC2DC\uD560 \uB550 \uBB34\uC801\uD654\uAC00 \uB418\uC5B4
             \uC801\uC744 \uCCD0\uB0B8\uB2E4."
-          CoolTime: 0.8
+          CoolTime: 0.7
           SkillDatas:
             datas:
             - Key: MovePower
-              Value: 50
+              Value: 15
             - Key: InvincibilityTime
-              Value: 0.5
+              Value: 0.3
       - Key: 20002
         Value:
           ID: 20002
@@ -88,8 +90,10 @@ MonoBehaviour:
           SkillDatas:
             datas:
             - Key: ShieldMovePower
-              Value: 1
+              Value: 4
             - Key: ShieldDamage
+              Value: 5
+            - Key: ShieldDamageRate
               Value: 5
             - Key: ShieldRemoveMinSpeed
               Value: 0.5
@@ -108,6 +112,8 @@ MonoBehaviour:
             datas:
             - Key: AdditionalDamage
               Value: 10
+            - Key: AdditionalDamageRate
+              Value: 10
       - Key: 22011
         Value:
           ID: 22011
@@ -120,6 +126,8 @@ MonoBehaviour:
             datas:
             - Key: Damage
               Value: 2
+            - Key: DamageRate
+              Value: 2
       - Key: 23001
         Value:
           ID: 23001
@@ -131,6 +139,8 @@ MonoBehaviour:
           SkillDatas:
             datas:
             - Key: AdditionalDamage
+              Value: 4
+            - Key: AdditionalDamageRate
               Value: 4
             - Key: StackCount
               Value: 3
@@ -145,9 +155,11 @@ MonoBehaviour:
           SkillDatas:
             datas:
             - Key: ArrowMoveSpeed
-              Value: 10
+              Value: 50
             - Key: ArrowDamage
-              Value: 1
+              Value: 3
+            - Key: ArrowDamageRate
+              Value: 3
             - Key: ArrowKnockbackPower
               Value: 100
             - Key: ArrowMaxDistance
@@ -179,6 +191,8 @@ MonoBehaviour:
             - Key: DroneMovePower
               Value: 15
             - Key: DroneDamage
+              Value: 10
+            - Key: DroneDamageRate
               Value: 10
             - Key: DroneRemoveMinSpeed
               Value: 0.5

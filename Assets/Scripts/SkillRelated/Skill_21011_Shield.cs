@@ -32,10 +32,17 @@ public class Skill_21011_Shield : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (m_rigidbody.velocity.magnitude <= m_removeMinSpeed) {
-			Destroy(gameObject);
+		float magnitude = m_rigidbody.velocity.magnitude;
+
+		if (magnitude <= float.Epsilon) {
+			return;
 		}
-	}
+
+        if (magnitude <= m_removeMinSpeed) {
+			Destroy(gameObject);
+			Debug.Log($"Delete Magnitude: {m_rigidbody.velocity.magnitude}");
+		}
+    }
 
 	public void SetDamage(float damage) => m_damage = damage;
 	public void SetKnockbackPower(float knockbackPower) => m_knockbackPower = knockbackPower;
@@ -68,4 +75,9 @@ public class Skill_21011_Shield : MonoBehaviour {
 		}
 
 	}
+
+    private void OnDestroy()
+    {
+		int a = 0;
+    }
 }
