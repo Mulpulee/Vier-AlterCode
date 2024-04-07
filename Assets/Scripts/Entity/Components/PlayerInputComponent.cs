@@ -121,8 +121,8 @@ namespace Entity.Components {
 				SkillSlot slot = (SkillSlot)i;
 
 				if (GameInputManager.GetKeyDown(slot)) {
-					if (i == start) m_skillComponent.TryCast(slot);
-                    else m_anim.Attack = m_skillComponent.TryCast(slot);
+					if (i == 2) m_anim.Attack = m_skillComponent.TryCast(slot);
+                    else m_skillComponent.TryCast(slot);
                 }
 			}
 

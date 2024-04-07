@@ -16,17 +16,21 @@ public class PlayerAnimationController : MonoBehaviour
 
     private Animator m_anim;
     private Rigidbody m_rigid;
+    private HudSpriteChanger m_hudimage;
 
     private void Start()
     {
         m_anim = GetComponent<Animator>();
         m_rigid = GetComponent<Rigidbody>();
+        m_hudimage = FindObjectOfType<HudSpriteChanger>();
         IsLeft = transform.GetFacing2D() == Facing2D.Left;
         IsWalking = false;
         IsJumping = false;
         Attack = false;
 
         PlayerType = 0;
+
+        StartCoroutine(WalkingSound());
     }
 
     private IEnumerator ChangeNext(int index) {
@@ -37,7 +41,9 @@ public class PlayerAnimationController : MonoBehaviour
     public void ChangeForm(int index)
     {
         PlayerType = index;
+        m_hudimage.ChangeForm(index);
         m_anim.Play("ChangeFadeIn");
+        SoundManager.instance.PlayEffect("FormChange");
         StartCoroutine(ChangeNext(index));
     }
 
@@ -46,12 +52,12 @@ public class PlayerAnimationController : MonoBehaviour
         if (m_rigid.velocity.x == 0) IsWalking = false;
         else IsWalking = true;
 
-
         IsLeft = transform.GetFacing2D() == Facing2D.Left;
 
         if (Attack)
         {
             m_anim.SetTrigger("Attack");
+            SoundManager.instance.PlayEffect("CommonAttack");
             Attack = false;
         }
 
@@ -68,5 +74,19 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (m_rigid.velocity.y == 0) IsJumping = false;
         else IsJumping = true;
+    }
+
+    private IEnumerator WalkingSound()
+    {
+        while (true)
+        {
+            yield return null;
+
+            if (IsWalking)
+            {
+                SoundManager.instance.PlayEffect("Walk");
+                yield return new WaitForSeconds(0.25f);
+            }
+        }
     }
 }

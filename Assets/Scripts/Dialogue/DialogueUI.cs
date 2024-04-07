@@ -39,7 +39,6 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
         }
     }
 
-
     public int ReadSelection()
     {
         return m_lastIndex;
@@ -94,7 +93,14 @@ public class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutput
 
     private void Update()
     {
+        if (m_printRoutine == null) return;
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StopCoroutine(m_printRoutine);
+            m_printRoutine = null;
+            EndPrint();
+        }
     }
 
     private IEnumerator PrintRoutine(Action pNext)
