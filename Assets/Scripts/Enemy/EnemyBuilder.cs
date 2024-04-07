@@ -10,7 +10,8 @@ using Utility.DataStructure;
 public enum EnemyType {
     Far,
     Hard,
-    Near
+    Near,
+    TutorialBot
 }
 
 public class EnemyBuilder : MonoBehaviour {
@@ -35,10 +36,22 @@ public class EnemyBuilder : MonoBehaviour {
 	[Header("Debugs")]
     [SerializeField] private SerializedDictionary<EnemyType, EnemyInfo> m_drawInfo;
 
+    [ContextMenu("Initialize Debuging")]
+    private void IntializeDebuging() {
+        for (int i = 0; i <= (int)EnemyType.TutorialBot; i++) {
+            EnemyType type = (EnemyType)i;
+            Debug.Log(type.ToString());
+            if (!m_drawInfo.ContainsKey(type)) {
+                m_drawInfo[type] = new EnemyInfo();
+            }
+        }
+    }
+
 	private void Reset() {
         m_drawInfo[EnemyType.Far]  = new EnemyInfo();
         m_drawInfo[EnemyType.Hard] = new EnemyInfo();
         m_drawInfo[EnemyType.Near] = new EnemyInfo();
+        m_drawInfo[EnemyType.TutorialBot] = new EnemyInfo();
 	}
 
 	private void Start() {
@@ -97,6 +110,15 @@ public class EnemyBuilder : MonoBehaviour {
 					enemyStatus.Defense = 0.0f;
 					enemyStatus.DamageReductionRate = 0.0f;
 					break;
+                case EnemyType.TutorialBot:
+                    enemyStatus.OriginHealth.SetMaxValue(1);
+                    enemyStatus.Health = 1;
+
+                    enemyStatus.Defense = 0.0f;
+                    enemyStatus.DamageReductionRate = 0.0f;
+
+                    builder.SetDeath(new TutorialBotDeath());
+                    break;
                 default:
                     continue;
 			}

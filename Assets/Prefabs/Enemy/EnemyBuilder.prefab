@@ -98,6 +98,11 @@ MonoBehaviour:
         DrawColor: {r: 0.21461582, g: 0, b: 1, a: 1}
         DrawSphereRadius: 0.5
         Enemy: {fileID: 7148400955331758388, guid: 61c26c243333f2b4e94cc8241d7524b1, type: 3}
+    - Key: 3
+      Value:
+        DrawColor: {r: 0, g: 0, b: 0, a: 1}
+        DrawSphereRadius: 0.5
+        Enemy: {fileID: 2352615059089272591, guid: 1d43105ce1c0d9845b5c8b86f2f3b0f4, type: 3}
 --- !u!1 &2076411469287197166
 GameObject:
   m_ObjectHideFlags: 0
