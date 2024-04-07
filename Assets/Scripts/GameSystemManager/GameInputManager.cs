@@ -34,7 +34,8 @@ namespace GameSystemManager {
 		private static readonly float KeysVersion = 0.1f;
 		[SerializeField] private SerializedDictionary<InputType, KeyCode> m_keyCodeByInputTypes;
 		[SerializeField] private bool m_isLocked;
-		HashSet<object> m_locks;
+		private Dictionary<InputType, HashSet<object>> m_lockByInputTypes;
+		private HashSet<object> m_locks;
 
 		public event Action OnKeyChanged;
 
@@ -99,9 +100,25 @@ namespace GameSystemManager {
 			m_locks.Add(key);
 			m_isLocked = true;
 		}
+		public void Lock(InputType type, object key) {
+			m_lockByInputTypes[type] ??= new HashSet<object>();
+
+            m_lockByInputTypes[type].Add(key);
+		}
 		public void UnLock(object key) {
 			m_locks.Remove(key);
 			m_isLocked = m_locks.Count > 0;
+		}
+        public void UnLock(InputType type, object key) {
+			m_lockByInputTypes[type] ??= new HashSet<object>();
+
+            m_lockByInputTypes[type].Remove(key);
+        }
+
+		private bool IsLockType(InputType type) {
+			m_lockByInputTypes[type] ??= new HashSet<object>();
+
+			return m_lockByInputTypes[type].Count > 0;
 		}
 
 		public KeyCode GetKeyCode(InputType type) => m_keyCodeByInputTypes[type];
@@ -138,6 +155,10 @@ namespace GameSystemManager {
 				return false;
 			}
 
+			if (Instance.IsLockType(type)) {
+				return false;
+			}
+
 			if (Instance.m_keyCodeByInputTypes.TryGetValue(type, out KeyCode code)) {
 				if (code == KeyCode.Mouse0) {
 					return Input.GetKeyDown(code) && !EventSystem.current.IsPointerOverGameObject();
@@ -153,7 +174,11 @@ namespace GameSystemManager {
 				return false;
 			}
 
-			if (Instance.m_keyCodeByInputTypes.TryGetValue(type, out KeyCode code)) {
+            if (Instance.IsLockType(type)) {
+                return false;
+            }
+
+            if (Instance.m_keyCodeByInputTypes.TryGetValue(type, out KeyCode code)) {
 				return Input.GetKey(code);
 			}
 
@@ -164,7 +189,11 @@ namespace GameSystemManager {
 				return false;
 			}
 
-			if (Instance.m_keyCodeByInputTypes.TryGetValue(type, out KeyCode code)) {
+            if (Instance.IsLockType(type)) {
+                return false;
+            }
+
+            if (Instance.m_keyCodeByInputTypes.TryGetValue(type, out KeyCode code)) {
 				return Input.GetKeyUp(code);
 			}
 
@@ -173,7 +202,9 @@ namespace GameSystemManager {
 
 		protected override void OnInstantiated() {
 			m_locks = new HashSet<object>();
-			LoadSettings();
+            m_lockByInputTypes = new Dictionary<InputType, HashSet<object>>();
+
+            LoadSettings();
 		}
 	}
 }
