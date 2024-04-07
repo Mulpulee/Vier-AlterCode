@@ -29,10 +29,16 @@ public class PlayerAnimationController : MonoBehaviour
         PlayerType = 0;
     }
 
+    private IEnumerator ChangeNext(int index) {
+        yield return new WaitForSeconds(0.3f);
+
+        m_anim.runtimeAnimatorController = m_acs[index];
+    }
     public void ChangeForm(int index)
     {
         PlayerType = index;
-        m_anim.runtimeAnimatorController = m_acs[index];
+        m_anim.Play("ChangeFadeIn");
+        StartCoroutine(ChangeNext(index));
     }
 
     private void Update()

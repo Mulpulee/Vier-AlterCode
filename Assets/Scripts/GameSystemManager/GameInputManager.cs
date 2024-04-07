@@ -13,7 +13,8 @@ namespace GameSystemManager {
 		Skill2 = SkillSlot.Slot2,
 		Skill3 = SkillSlot.Slot3,
 		Skill4 = SkillSlot.Slot4,
-		FormSlot1,
+		Skill5 = SkillSlot.Slot5,
+		FormSlot1 = SkillSlot.Count,
 		FormSlot2,
 		FormSlot3,
 		FormSlot4,
@@ -29,6 +30,8 @@ namespace GameSystemManager {
 
 	public class GameInputManager : IndestructibleSingleton<GameInputManager> {
 		private static readonly string SaveKey = "KeySettings";
+		private static readonly string Version = "KeyVersion";
+		private static readonly float KeysVersion = 0.1f;
 		[SerializeField] private SerializedDictionary<InputType, KeyCode> m_keyCodeByInputTypes;
 		[SerializeField] private bool m_isLocked;
 		HashSet<object> m_locks;
@@ -42,10 +45,25 @@ namespace GameSystemManager {
 		private void SaveSettings() {
 			string json = EncryptionUtility.ToEncrytedString(m_keyCodeByInputTypes);
 			PlayerPrefs.SetString(SaveKey, json);
+			PlayerPrefs.SetFloat(Version, KeysVersion);
 		}
 		[ContextMenu("Load")]
 		private void LoadSettings() {
 			if (PlayerPrefs.HasKey(SaveKey)) {
+				if (PlayerPrefs.HasKey(Version)) {
+					float version = PlayerPrefs.GetFloat(Version);
+					if (GameInputManager.KeysVersion > version) {
+						Debug.Log($"Key Version Change! {version} -> {GameInputManager.KeysVersion}");
+						ResetSettings();
+                        SaveSettings();
+                        return;
+                    }
+				} else {
+                    Debug.Log($"Key Version Change! None -> {GameInputManager.KeysVersion}");
+                    ResetSettings();
+					SaveSettings();
+					return;
+				}
 				string json = PlayerPrefs.GetString(SaveKey);
 				m_keyCodeByInputTypes = EncryptionUtility.FromEncrytedString<SerializedDictionary<InputType, KeyCode>>(json);
 			} else {
@@ -61,6 +79,7 @@ namespace GameSystemManager {
 				{ InputType.Skill2, KeyCode.W },
 				{ InputType.Skill3, KeyCode.E },
 				{ InputType.Skill4, KeyCode.R },
+				{ InputType.Skill5, KeyCode.T },
 				{ InputType.FormSlot1, KeyCode.BackQuote },
 				{ InputType.FormSlot2, KeyCode.Alpha1 },
 				{ InputType.FormSlot3, KeyCode.Alpha2 },

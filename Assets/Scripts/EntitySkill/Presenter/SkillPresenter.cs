@@ -42,8 +42,10 @@ namespace EntitySkill.Presenter {
 		}
 		private void OnKeyChanged() {
 			for (int i = 0; i < (int)SkillSlot.Count; i++) {
-				View.SkillElement[i].BindKey((SkillSlot)i);
-				LayoutRebuilder.ForceRebuildLayoutImmediate(View.SkillElement[i].KeyText.rectTransform);
+				int index = i;
+
+                View.SkillElement[index].BindKey((SkillSlot)i);
+				LayoutRebuilder.ForceRebuildLayoutImmediate(View.SkillElement[index].KeyText.rectTransform);
 			}
 		}
 

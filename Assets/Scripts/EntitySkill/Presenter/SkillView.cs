@@ -15,6 +15,7 @@ namespace EntitySkill.Presenter {
 				SkillElementParent = gameObject;
 			}
 			SkillElement = SkillElementParent.transform.GetComponentsInChildren<SkillViewElement>().ToList();
+			SkillElement.Reverse();
 
 			while (SkillElement.Count > (int)SkillSlot.Count) {
 				int index = SkillElement.Count - 1;

@@ -43,7 +43,6 @@ public class Skill_23011_Arrow : MonoBehaviour {
 
 
 	private void OnTriggerEnter(Collider other) {
-		Debug.Log("Enter!");
 		if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
 			Destroy(gameObject);
 		}
@@ -55,7 +54,6 @@ public class Skill_23011_Arrow : MonoBehaviour {
 		}
 
 		if (other.TryGetComponent(out IHittable hit)) {
-			Debug.Log($"Get Hittable! {m_damage}");
 			hit.OnHit(gameObject, m_damage, HitType.Skill);
 		}
 		if (other.TryGetComponent(out Rigidbody rigidbody)) {

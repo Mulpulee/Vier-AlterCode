@@ -39,7 +39,7 @@ namespace EntitySkill {
 			m_type = SkillDataSystem.GetSkillType(m_id);
 
 			m_cooldown = new SkillCooldown(m_id, m_type == SkillType.Passive);
-			m_customCooldown = new SkillCooldown(0.5f);
+			m_customCooldown = new SkillCooldown(0.1f);
 
 			m_stateByEnum.Add(SkillState.Available, new SkillAvailable());
 			m_stateByEnum.Add(SkillState.UnAvailable, new SkillUnAvailable());

@@ -44,9 +44,10 @@ namespace Entity.Player {
 
 			var skillCaster = player.GetComponent<PlayerSkillComponent>();
 			skillCaster.SetSkill(SkillSlot.Slot1, 10001);
-			skillCaster.SetSkill(SkillSlot.Slot2, 10002);
-			skillCaster.SetSkill(SkillSlot.Slot3, 0);
+			skillCaster.SetSkill(SkillSlot.Slot2, 20001);
+			skillCaster.SetSkill(SkillSlot.Slot3, 10002);
 			skillCaster.SetSkill(SkillSlot.Slot4, 0);
+			skillCaster.SetSkill(SkillSlot.Slot5, 0);
 		}
 	}
 }
