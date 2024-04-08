@@ -38,7 +38,7 @@ namespace EntitySkill.Skills {
 				target.ChangeState(SkillState.Cooldown);
 			}
 			if (m_rigidBody != null) {
-				m_rigidBody.AddForce((float)m_facing * m_deltaTime * m_movePower * Vector3.right, ForceMode.Acceleration);
+				m_rigidBody.AddForce((float)m_facing * m_deltaTime * m_movePower * Vector3.right * TimeManager.DeltaTime * 1000.0f, ForceMode.Acceleration);
 			}
 
             m_curTime -= TimeManager.DeltaTime;
