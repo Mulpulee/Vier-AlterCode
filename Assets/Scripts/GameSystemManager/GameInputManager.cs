@@ -101,7 +101,9 @@ namespace GameSystemManager {
 			m_isLocked = true;
 		}
 		public void Lock(InputType type, object key) {
-			m_lockByInputTypes[type] ??= new HashSet<object>();
+            if (!m_lockByInputTypes.ContainsKey(type)) {
+                m_lockByInputTypes.Add(type, new HashSet<object>());
+            }
 
             m_lockByInputTypes[type].Add(key);
 		}
@@ -110,15 +112,19 @@ namespace GameSystemManager {
 			m_isLocked = m_locks.Count > 0;
 		}
         public void UnLock(InputType type, object key) {
-			m_lockByInputTypes[type] ??= new HashSet<object>();
+            if (!m_lockByInputTypes.ContainsKey(type)) {
+                m_lockByInputTypes.Add(type, new HashSet<object>());
+            }
 
             m_lockByInputTypes[type].Remove(key);
         }
 
 		private bool IsLockType(InputType type) {
-			m_lockByInputTypes[type] ??= new HashSet<object>();
+            if (!m_lockByInputTypes.ContainsKey(type)) {
+                m_lockByInputTypes.Add(type, new HashSet<object>());
+            }
 
-			return m_lockByInputTypes[type].Count > 0;
+            return m_lockByInputTypes[type].Count > 0;
 		}
 
 		public KeyCode GetKeyCode(InputType type) => m_keyCodeByInputTypes[type];
