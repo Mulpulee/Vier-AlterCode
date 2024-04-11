@@ -100,16 +100,11 @@ namespace Entity.Components {
 
 			if (!isGround) {
 				m_moveComponent.StopGravity();
-
-                m_anim.IsJumping = false;
-                m_anim.Jump = false;
             }
 
             if (!GameInputManager.GetKey(InputType.Jump) && isGround) {
 				m_moveComponent.StartGravity();
-
                 m_anim.IsJumping = false;
-                m_anim.Jump = false;
             }
 
 			if (GameInputManager.GetKeyDown(InputType.Jump) && isGround)

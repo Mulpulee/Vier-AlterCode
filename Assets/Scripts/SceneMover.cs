@@ -5,7 +5,7 @@ using Utility.SceneManagement;
 
 public class SceneMover : MonoBehaviour {
 	public static void GameLoad() {
-		SceneLoader.LoadScene("FirstMapScene");
+		SceneLoader.LoadScene("TutorialScene");
 	}
 
 	public static void GameExit() {

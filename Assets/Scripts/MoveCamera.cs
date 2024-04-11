@@ -26,16 +26,16 @@ public class MoveCamera : MonoBehaviour
 
     void OnDrawGizmos() //카메라 제한영역 그리기
     {
-            Vector3 p1 = new Vector3(minX, maxY, z); 
-            Vector3 p2 = new Vector3(maxX, maxY, z);
-            Vector3 p3 = new Vector3(maxX, minY, z);
-            Vector3 p4 = new Vector3(minX, minY, z);
+        Vector3 p1 = new Vector3(minX, maxY, z); 
+        Vector3 p2 = new Vector3(maxX, maxY, z);
+        Vector3 p3 = new Vector3(maxX, minY, z);
+        Vector3 p4 = new Vector3(minX, minY, z);
 
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(p1, p2);
-            Gizmos.DrawLine(p2, p3);
-            Gizmos.DrawLine(p3, p4);
-            Gizmos.DrawLine(p4, p1);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(p1, p2);
+        Gizmos.DrawLine(p2, p3);
+        Gizmos.DrawLine(p3, p4);
+        Gizmos.DrawLine(p4, p1);
     }
 
     void Update()
@@ -43,7 +43,6 @@ public class MoveCamera : MonoBehaviour
         float x = Mathf.Clamp(Target_transform.position.x, minX, maxX);
         float y = Mathf.Clamp(Target_transform.position.y, minY, maxY);
 
-        this_transform.position = Vector2.Lerp(this_transform.position, new Vector3(x, y, z), follow_speed * Time.deltaTime);
-        this_transform.Translate(0, 0, z); //카메라를 원래 z축으로 이동
+        this_transform.position = Vector3.Lerp(this_transform.position, new Vector3(x, y, z), follow_speed * Time.deltaTime);
     }
 }

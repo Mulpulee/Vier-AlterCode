@@ -7,7 +7,7 @@ public class MoveScript : MonoBehaviour
 {
     public float speed = 20;
 
-    Rigidbody rigidbody;
+    Rigidbody m_rigid;   
     Vector3 movement;
 
     public int maxHp;
@@ -47,7 +47,7 @@ public class MoveScript : MonoBehaviour
         atkDmg = 30;
         //animator = GetComponent<Animator>;
         SetAttackSpeed(1.5f);
-        rigidbody = GetComponent<Rigidbody>();
+        m_rigid = GetComponent<Rigidbody>();
     }
     void Update()
     {

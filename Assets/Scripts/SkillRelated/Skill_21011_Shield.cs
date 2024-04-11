@@ -78,6 +78,6 @@ public class Skill_21011_Shield : MonoBehaviour {
 
     private void OnDestroy()
     {
-		int a = 0;
+
     }
 }

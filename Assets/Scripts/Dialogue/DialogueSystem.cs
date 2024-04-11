@@ -21,8 +21,9 @@ namespace DialogueSystem
 
         public void OnExecute(DialogueMachine pMachine)
         {
-            pMachine.Output.WritePos(m_talker);
+            pMachine.Output.WriteTalker(m_talker);
             pMachine.Output.WriteLine(m_line);
+            pMachine.Output.WriteKey(-1);
 
             pMachine.Output.DoPrint(pMachine.NextLine);
             //얘가 프린팅 다 끝나면 너가 알아서 다음 줄 실행해라
@@ -44,9 +45,32 @@ namespace DialogueSystem
 
         public void OnExecute(DialogueMachine pMachine)
         {
-            pMachine.Output.WritePos(m_talker);
+            pMachine.Output.WriteTalker(m_talker);
             pMachine.Output.WriteLine(m_line);
             pMachine.Output.WriteSelections(m_selects);
+
+            pMachine.Output.DoPrint(pMachine.NextLine);
+        }
+    }
+
+    public class DialogueKeyInputLine : IDialogueLine
+    {
+        private String m_talker;
+        private String m_line;
+        private Int32 m_key;
+
+        public DialogueKeyInputLine(String pTalker, String pLine, Int32 pKey)
+        {
+            m_talker = pTalker;
+            m_line = pLine;
+            m_key = pKey;
+        }
+
+        public void OnExecute(DialogueMachine pMachine)
+        {
+            pMachine.Output.WriteTalker(m_talker);
+            pMachine.Output.WriteLine(m_line);
+            pMachine.Output.WriteKey(m_key);
 
             pMachine.Output.DoPrint(pMachine.NextLine);
         }
@@ -68,16 +92,17 @@ namespace DialogueSystem
 
         public void OnExecute(DialogueMachine pMachine)
         {
-            m_input.Value = pMachine.Input.ReadSelection();
+            m_input.Value = pMachine.Input.ReadInput();
             pMachine.NextLine();
         }
     }
 
     public interface IDialogueOutput
     {
-        void WritePos(String pPos);
+        void WriteTalker(String pTalker);
         void WriteLine(String pLine);
         void WriteSelections(String[] pSelections);
+        void WriteKey(Int32 pKey);
 
         void BeginPrint();
         void DoPrint(Action pNext);
@@ -86,7 +111,7 @@ namespace DialogueSystem
 
     public interface IDialogueInput
     {
-        Int32 ReadSelection();
+        Int32 ReadInput();
     }
 
 

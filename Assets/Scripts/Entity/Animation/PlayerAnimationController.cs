@@ -13,6 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private int PlayerType;
     [SerializeField] private RuntimeAnimatorController[] m_acs;
+    [SerializeField] private PlayerFaderAnimation m_fader;
 
     private Animator m_anim;
     private Rigidbody m_rigid;
@@ -37,19 +38,21 @@ public class PlayerAnimationController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         m_anim.runtimeAnimatorController = m_acs[index];
+        m_anim.Play(IsLeft ? "Idle_L" : "Idle_R");
+        m_fader.FadeOut();
     }
     public void ChangeForm(int index)
     {
         PlayerType = index;
         m_hudimage.ChangeForm(index);
-        m_anim.Play("ChangeFadeIn");
+        m_fader.FadeIn();
         SoundManager.instance.PlayEffect("FormChange");
         StartCoroutine(ChangeNext(index));
     }
 
     private void Update()
     {
-        if (m_rigid.velocity.x == 0) IsWalking = false;
+        if (-0.01f < m_rigid.velocity.x && m_rigid.velocity.x < 0.01f) IsWalking = false;
         else IsWalking = true;
 
         IsLeft = transform.GetFacing2D() == Facing2D.Left;

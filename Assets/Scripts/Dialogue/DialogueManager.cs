@@ -6,6 +6,11 @@ using XLua;
 
 using DialogueSystem;
 
+public enum DialogueStyle
+{
+    Box,
+    Floating
+}
 
 public class DialogueManager : MonoBehaviour
 {
@@ -37,7 +42,6 @@ public class DialogueManager : MonoBehaviour
     {
         m_dialogueLuaEnv = new LuaEnv();
         m_dialogueMachine = new DialogueMachine();
-        FindDialogueUI();
 
         TextAsset dialogueCommon = Resources.Load<TextAsset>("Dialogue/Dialogue_common");
         m_dialogueLuaEnv.DoString(dialogueCommon.text);
@@ -49,22 +53,32 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void FindDialogueUI()
+    private void FindDialogueUI<T>() where T : DialogueUI
     {
-        m_dialogueUI = FindObjectOfType<DialogueUI>();
+        m_dialogueUI = FindObjectOfType<T>();
         m_dialogueMachine.BindInput(m_dialogueUI);
         m_dialogueMachine.BindOutput(m_dialogueUI);
     }
 
-    public void RunDialog(IEnumerator<IDialogueLine> pLines)
+    public void RunDialogue(IEnumerator<IDialogueLine> pLines, DialogueStyle pStyle)
     {
-        if (m_dialogueUI == null)
-            FindDialogueUI();
+        switch (pStyle)
+        {
+            case DialogueStyle.Box:
+                FindDialogueUI<DialogueBox>();
+                break;
+            case DialogueStyle.Floating:
+                FindDialogueUI<FloatingMessage>();
+                break;
+            default:
+                FindDialogueUI<DialogueBox>();
+                break;
+        }
 
         m_dialogueMachine.RunDialog(pLines);
     }
 
-    public void RunDialog(String pName)
+    public void RunDialogue(String pName, DialogueStyle pStyle)
     {
         var dialogue = m_dialogueLuaEnv.Global.Get<IEnumerator<IDialogueLine>>(pName);
         if(dialogue == null)
@@ -72,7 +86,7 @@ public class DialogueManager : MonoBehaviour
             throw new Exception($"Dialogue not found : {pName}");
         }
 
-        RunDialog(dialogue);
+        RunDialogue(dialogue, pStyle);
     }
 }
 

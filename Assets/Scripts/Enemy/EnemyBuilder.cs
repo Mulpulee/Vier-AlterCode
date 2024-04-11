@@ -111,11 +111,11 @@ public class EnemyBuilder : MonoBehaviour {
 					enemyStatus.DamageReductionRate = 0.0f;
 					break;
                 case EnemyType.TutorialBot:
-                    enemyStatus.OriginHealth.SetMaxValue(1);
-                    enemyStatus.Health = 1;
+                    enemyStatus.OriginHealth.SetMaxValue(99999);
+                    enemyStatus.Health = 99999;
 
-                    enemyStatus.Defense = 0.0f;
-                    enemyStatus.DamageReductionRate = 0.0f;
+                    enemyStatus.Defense = 99999f;
+                    enemyStatus.DamageReductionRate = 99999f;
 
                     builder.SetDeath(new TutorialBotDeath());
                     break;

@@ -14,6 +14,10 @@ function MakeSelect(pTalker,pTalkLine,pSelects)
     coroutine.yield(inputHandleLine)
     return handler.Value --Property는 :가 아니라 . 으로 접근
 end
+function KeyInput(pTalker,pTalkLine,pKey)
+    local keyinputLine = CS.DialogueSystem.DialogueKeyInputLine(pTalker,pTalkLine,pKey)
+    coroutine.yield(keyinputLine)
+end
 function CreateDialog(func)
     return util.cs_generator(func)
 end
