@@ -55,6 +55,8 @@ public abstract class DialogueUI : MonoBehaviour, IDialogueInput, IDialogueOutpu
         m_printRoutine = StartCoroutine(PrintRoutine(pNext));
     }
 
+    public virtual void DoPrint(String pAction, Action pNext) { }
+
     protected virtual void OnInput(Int32 pIndex)
     {
         m_input = pIndex;

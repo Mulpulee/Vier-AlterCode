@@ -3,9 +3,20 @@ Dialogue_0002 = CreateDialog(function()
     Talk("player", "윽...")
     Talk("cat", "아직 움직이면 안돼.")
 
-    --페이드인 효과
+    Action("FadeIn");
 
-    Talk("player", "여긴... 어디?")
+local select = MakeSelect("player",
+    {
+        "누구?",
+        "여긴 어디?"
+    })
+
+    if select == 0 then
+        Talk("player", "누구?")
+    elseif select == 1 then
+        Talk("player", "여긴 어디?")
+    end
+
     Talk("cat", "여긴 내 자가용 안이야.")
     Talk("cat", "작은 몸으론 위험해서 열심히 만들었지.")
     Talk("cat", "이걸로 널 여기까지 데려왔어.")

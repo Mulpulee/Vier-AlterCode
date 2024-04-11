@@ -6,18 +6,26 @@ function Talk(pTalker,pTalkLine)
     local talkLine = CS.DialogueSystem.DialogueTalkLine(pTalker,pTalkLine)
     coroutine.yield(talkLine)
 end
-function MakeSelect(pTalker,pTalkLine,pSelects)
-    local selectLine = CS.DialogueSystem.DialogueSelectLine(pTalker,pTalkLine,pSelects)
+
+function MakeSelect(pTalker,pSelects)
+    local selectLine = CS.DialogueSystem.DialogueSelectLine(pTalker,pSelects)
     coroutine.yield(selectLine)
     local handler = CS.DialogueSystem.IntInput()
     local inputHandleLine = CS.DialogueSystem.DialogueInputHandleLine(handler)
     coroutine.yield(inputHandleLine)
     return handler.Value --Property는 :가 아니라 . 으로 접근
 end
+
 function KeyInput(pTalker,pTalkLine,pKey)
     local keyinputLine = CS.DialogueSystem.DialogueKeyInputLine(pTalker,pTalkLine,pKey)
     coroutine.yield(keyinputLine)
 end
+
+function Action(pAction)
+    local action = CS.DialogueSystem.DialogueActionLine(pAction)
+    coroutine.yield( action )
+end
+
 function CreateDialog(func)
     return util.cs_generator(func)
 end

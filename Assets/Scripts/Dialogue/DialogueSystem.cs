@@ -33,20 +33,17 @@ namespace DialogueSystem
     public class DialogueSelectLine : IDialogueLine
     {
         private String m_talker;
-        private String m_line;
         private String[] m_selects;
 
-        public DialogueSelectLine(String pTalker, String pLine, String[] pSelects)
+        public DialogueSelectLine(String pTalker, String[] pSelects)
         {
             m_talker = pTalker;
-            m_line = pLine;
             m_selects = pSelects;
         }
 
         public void OnExecute(DialogueMachine pMachine)
         {
             pMachine.Output.WriteTalker(m_talker);
-            pMachine.Output.WriteLine(m_line);
             pMachine.Output.WriteSelections(m_selects);
 
             pMachine.Output.DoPrint(pMachine.NextLine);
@@ -73,6 +70,23 @@ namespace DialogueSystem
             pMachine.Output.WriteKey(m_key);
 
             pMachine.Output.DoPrint(pMachine.NextLine);
+        }
+    }
+
+    public class DialogueActionLine : IDialogueLine
+    {
+        private String m_action;
+
+        public DialogueActionLine(String pAction)
+        {
+            m_action = pAction;
+        }
+
+        public void OnExecute(DialogueMachine pMachine)
+        {
+            pMachine.Output.WriteLine(m_action);
+
+            pMachine.Output.DoPrint(m_action, pMachine.NextLine);
         }
     }
 
@@ -106,6 +120,7 @@ namespace DialogueSystem
 
         void BeginPrint();
         void DoPrint(Action pNext);
+        void DoPrint(String pAction, Action pNext);
         void EndPrint();
     }
 
