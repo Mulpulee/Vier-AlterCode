@@ -25,6 +25,9 @@ public class EnemyBuilder : MonoBehaviour {
         public EntityBehaviour Enemy = null;
 	}
 
+    public int EnemyCount => m_spawnedEnemy.childCount;
+    public bool IsEnemyZero => m_spawnedEnemy.childCount <= 0;
+
     [Header("Required Info")]
     [SerializeField] private Transform m_spawnedEnemy;
     [SerializeField] private Canvas m_enemyUICanvas;
@@ -35,6 +38,8 @@ public class EnemyBuilder : MonoBehaviour {
 
 	[Header("Debugs")]
     [SerializeField] private SerializedDictionary<EnemyType, EnemyInfo> m_drawInfo;
+    [SerializeField] private int m_enemyCount;
+    [SerializeField] private bool m_isEnemyZero;
 
     [ContextMenu("Initialize Debuging")]
     private void IntializeDebuging() {
@@ -54,14 +59,14 @@ public class EnemyBuilder : MonoBehaviour {
         m_drawInfo[EnemyType.TutorialBot] = new EnemyInfo();
 	}
 
-	private void Start() {
+    public void SpawnEnemys() {
         Type enemyTypeEnum = typeof(EnemyType);
 
         foreach (CustomKeyValuePair<EnemyType, Vector3> enemy in m_buildEnemys) {
-			if (!m_drawInfo.ContainsKey(enemy.Key)) {
+            if (!m_drawInfo.ContainsKey(enemy.Key)) {
                 continue;
             }
-			EnemyInfo info = m_drawInfo[enemy.Key];
+            EnemyInfo info = m_drawInfo[enemy.Key];
 
             var builder = EntityBehaviour.GetBuilder(info.Enemy, enemy.Value);
             builder.SetHit(new EntityHit());
@@ -73,32 +78,32 @@ public class EnemyBuilder : MonoBehaviour {
             builder.SetName(enemyName);
 
             var enemyStatus = new EntityStatus();
-			switch (enemy.Key) {
-				case EnemyType.Far:
-					enemyStatus.OriginHealth.SetMaxValue(100);
-					enemyStatus.Health = 100;
-					enemyStatus.Attack = 10.0f;
-					enemyStatus.AttackSpeed = 5.0f;
-					enemyStatus.Speed = 5.0f;
-					enemyStatus.AttackRange = 12.0f;
-					enemyStatus.Vision = 20.0f;
+            switch (enemy.Key) {
+                case EnemyType.Far:
+                    enemyStatus.OriginHealth.SetMaxValue(100);
+                    enemyStatus.Health = 100;
+                    enemyStatus.Attack = 10.0f;
+                    enemyStatus.AttackSpeed = 5.0f;
+                    enemyStatus.Speed = 5.0f;
+                    enemyStatus.AttackRange = 12.0f;
+                    enemyStatus.Vision = 20.0f;
 
                     enemyStatus.Defense = 0.0f;
                     enemyStatus.DamageReductionRate = 0.0f;
-					break;
-				case EnemyType.Hard:
-					enemyStatus.OriginHealth.SetMaxValue(100);
-					enemyStatus.Health = 100;
-					enemyStatus.Attack = 10.0f;
-					enemyStatus.AttackSpeed = 3.0f;
-					enemyStatus.Speed = 2.0f;
-					enemyStatus.AttackRange = 4.0f;
-					enemyStatus.Vision = 12.0f;
+                    break;
+                case EnemyType.Hard:
+                    enemyStatus.OriginHealth.SetMaxValue(100);
+                    enemyStatus.Health = 100;
+                    enemyStatus.Attack = 10.0f;
+                    enemyStatus.AttackSpeed = 3.0f;
+                    enemyStatus.Speed = 2.0f;
+                    enemyStatus.AttackRange = 4.0f;
+                    enemyStatus.Vision = 12.0f;
 
-					enemyStatus.Defense = 0.0f;
-					enemyStatus.DamageReductionRate = 0.0f;
-					break;
-				case EnemyType.Near:
+                    enemyStatus.Defense = 0.0f;
+                    enemyStatus.DamageReductionRate = 0.0f;
+                    break;
+                case EnemyType.Near:
                     enemyStatus.OriginHealth.SetMaxValue(100);
                     enemyStatus.Health = 100;
                     enemyStatus.Attack = 10.0f;
@@ -107,9 +112,9 @@ public class EnemyBuilder : MonoBehaviour {
                     enemyStatus.AttackRange = 1.5f;
                     enemyStatus.Vision = 14.0f;
 
-					enemyStatus.Defense = 0.0f;
-					enemyStatus.DamageReductionRate = 0.0f;
-					break;
+                    enemyStatus.Defense = 0.0f;
+                    enemyStatus.DamageReductionRate = 0.0f;
+                    break;
                 case EnemyType.TutorialBot:
                     enemyStatus.OriginHealth.SetMaxValue(99999);
                     enemyStatus.Health = 99999;
@@ -121,7 +126,7 @@ public class EnemyBuilder : MonoBehaviour {
                     break;
                 default:
                     continue;
-			}
+            }
 
             builder.SetStatus(enemyStatus);
 
@@ -134,24 +139,41 @@ public class EnemyBuilder : MonoBehaviour {
                     if (hpBarObject.TryGetComponent(out RectTransform rectTransform)) {
                         enemyInfo.hpBar = rectTransform;
 
-						Transform child = rectTransform.GetChild(0);
+                        Transform child = rectTransform.GetChild(0);
 
-						if (child != null) {
-							enemyInfo.nowHpbar = child.GetComponent<Image>();
-						}
-					} else {
+                        if (child != null) {
+                            enemyInfo.nowHpbar = child.GetComponent<Image>();
+                        }
+                    }
+                    else {
                         Destroy(hpBarObject);
                     }
                 }
-            } else {
+            }
+            else {
                 continue;
             }
 
             behavior.name = $"{enemyName} (Spawn From: {enemy.Value})";
-		}
-	}
+        }
+    }
 
-	private void OnDrawGizmos() {
+	private void Start() {
+        SpawnEnemys();
+    }
+
+    private void Update() {
+#if UNITY_EDITOR
+        m_enemyCount = EnemyCount;
+        m_isEnemyZero = IsEnemyZero;
+
+        // IDE0052 Error Removed.
+        if (m_enemyCount == 0) { }
+        if (m_isEnemyZero) { }
+#endif
+    }
+
+    private void OnDrawGizmos() {
         Color before = Gizmos.color;
 	    
         foreach(CustomKeyValuePair<EnemyType, Vector3> enemy in m_buildEnemys) {
