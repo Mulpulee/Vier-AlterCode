@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/RealUse/TutorialScene.unity
     guid: 788f67ff66e165941b0e3a0b684affaa
   - enabled: 1
+    path: Assets/Scenes/RealUse/FirstMapIntroScene.unity
+    guid: 7f5b2656f334001429347e871f3cbb22
+  - enabled: 1
     path: Assets/Scenes/RealUse/FirstMapScene.unity
-    guid: a4ab9de35f3fe5b4687256a5a8e22fec
+    guid: 5c20e2021ac3f24419f537d0e624c244
   m_configObjects: {}

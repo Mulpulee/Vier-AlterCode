@@ -14,6 +14,6 @@ public class Start_b_script : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("IntroScene");
+        GameManagerEx.Instance.StartIntro();
     }
 }

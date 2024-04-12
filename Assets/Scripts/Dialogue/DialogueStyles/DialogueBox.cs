@@ -42,7 +42,7 @@ public class DialogueBox : DialogueUI
     public override void EndPrint()
     {
         m_dialogueBox.SetActive(false);
-        GameManagerEx.Instance.GoToFirstScene();
+        GameManagerEx.Instance.StartTutorial();
     }
     
     public override void DoPrint(String pAction, Action pNext)
@@ -50,7 +50,7 @@ public class DialogueBox : DialogueUI
         if (m_printRoutine != null)
             StopCoroutine(m_printRoutine);
 
-        if (pAction == "FadeIn") m_printRoutine = StartCoroutine(ScreenFadeIn(pNext));
+        if (pAction == "FadeIn") m_printRoutine = ScreenFader.instance.FadeIn(pNext);
     }
 
     private void Update()
@@ -183,14 +183,5 @@ public class DialogueBox : DialogueUI
         for (int i = pIndex; i < m_selections.Length - 1; i++) pointer += "\n ";
 
         return pointer;
-    }
-
-    private IEnumerator ScreenFadeIn(Action pNext)
-    {
-        m_screenFader.Play();
-
-        yield return new WaitForSeconds(0.5f);
-
-        pNext.Invoke();
     }
 }
