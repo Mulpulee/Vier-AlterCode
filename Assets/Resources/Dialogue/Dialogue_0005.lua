@@ -1,22 +1,25 @@
 Dialogue_0004 = CreateDialog(function()
 
+    Action("FadeIn");
     Talk("cat", "경비가 살벌한데?")
     Talk("player", "내가 탈출하면서 늘어난 게 아닐까.")
     Talk("cat", "그럴지도 모르지.")
     Talk("cat", "어때, 긴장돼?")
     
-local select = MakeSelect("player",
+    local select = MakeSelect("player",
     {
         "엄청나게.",
         "딱히."
     })
-
+    
     if select == 0 then
+        Talk("player", "엄청나게.")
         Talk("cat", "그게 일반적인 반응일거야.")
         Talk("cat", "너도 뿌리는 인간이잖아?")
         Talk("cat", "긴장 풀어.")
         Talk("cat", "복수를 하고 나면 모든게 나아질 거야.")
     elseif select == 1 then
+        Talk("player", "딱히.")
         Talk("cat", "생각보다 강심장이구나?")
         Talk("cat", "뭐, 그정도 담력이 아니면 힘들긴 하지.")
     end

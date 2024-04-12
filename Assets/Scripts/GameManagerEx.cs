@@ -14,8 +14,14 @@ public class GameManagerEx
         }
     }
 
+    public bool isDialogueOn = false;
+
+    private string m_scene = "Title";
+
     public void OnSceneChanged(string pScene)
     {
+        m_scene = pScene;
+
         switch (pScene)
         {
             case "Intro":
@@ -31,6 +37,16 @@ public class GameManagerEx
                 break;
             default:
                 break;
+        }
+
+        foreach (var item in GameObject.FindObjectsOfType<InteractableObject>())
+        {
+            switch (item.Name)
+            {
+                case "Tutorial_Meka": item.Init(() => EndTutorial()); break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -52,5 +68,17 @@ public class GameManagerEx
     public void StartFirstMap()
     {
         ScreenFader.instance.FadeOut(() => SceneMover.MoveTo("FirstMapScene"));
+    }
+
+    public void DialogueEnded()
+    {
+        isDialogueOn = false;
+        switch (m_scene)
+        {
+            case "Intro": StartTutorial(); break;
+            case "FirstMapIntro": StartFirstMap(); break;
+            default:
+                break;
+        }
     }
 }

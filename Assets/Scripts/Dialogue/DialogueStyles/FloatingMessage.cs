@@ -35,11 +35,13 @@ public class FloatingMessage : DialogueUI
     public override void BeginPrint()
     {
         m_dialogueBox.SetActive(true);
+        GameManagerEx.Instance.isDialogueOn = true;
     }
 
     public override void EndPrint()
     {
         m_dialogueBox.SetActive(false);
+        GameManagerEx.Instance.DialogueEnded();
     }
 
     private void Update()

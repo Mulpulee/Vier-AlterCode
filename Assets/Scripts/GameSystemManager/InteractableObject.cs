@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    public string Name;
+
+    [SerializeField] private GameObject m_graphic;
+
     private Action m_action;
 
     public void Init(Action pAction)
@@ -13,11 +17,30 @@ public class InteractableObject : MonoBehaviour
         m_action = pAction;
     }
 
-    private void Update()
+    private void OnTriggerStay(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
+
         if (GameInputManager.GetKeyDown(InputType.Interact))
         {
             m_action.Invoke();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (GameManagerEx.Instance.isDialogueOn) return;
+
+        if (!other.CompareTag("Player")) return;
+
+        m_graphic.SetActive(true);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (GameManagerEx.Instance.isDialogueOn) return;
+
+        if (!other.CompareTag("Player")) return;
+
+        m_graphic.SetActive(false);
     }
 }
