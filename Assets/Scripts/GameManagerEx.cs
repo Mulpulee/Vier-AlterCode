@@ -37,6 +37,8 @@ public class GameManagerEx
                 break;
             case "Chapter1_1": case "Chapter1_2": case "Chapter1_3": case "Chapter1_4":
                 ScreenFader.instance.Init(true); ScreenFader.instance.FadeIn(() => { }); break;
+            case "Ending":
+                ScreenFader.instance.Init(true); ScreenFader.instance.FadeIn(() => { }); break;
             default:
                 break;
         }
