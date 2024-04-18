@@ -11,15 +11,17 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private GameObject m_graphic;
 
     private Action m_action;
+    private EnemyBuilder m_enemy;
 
     public void Init(Action pAction)
     {
         m_action = pAction;
+        m_enemy = FindObjectOfType<EnemyBuilder>();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player") || !m_enemy.IsEnemyZero) return;
 
         if (GameInputManager.GetKeyDown(InputType.Interact))
         {
@@ -29,7 +31,7 @@ public class InteractableObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GameManagerEx.Instance.isDialogueOn) return;
+        if (GameManagerEx.Instance.isDialogueOn || !m_enemy.IsEnemyZero) return;
 
         if (!other.CompareTag("Player")) return;
 
@@ -37,7 +39,7 @@ public class InteractableObject : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (GameManagerEx.Instance.isDialogueOn) return;
+        if (GameManagerEx.Instance.isDialogueOn || !m_enemy.IsEnemyZero) return;
 
         if (!other.CompareTag("Player")) return;
 

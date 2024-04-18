@@ -35,6 +35,8 @@ public class GameManagerEx
                 ScreenFader.instance.Init(true);
                 DialogueManager.Instance.RunDialogue("Dialogue_0004", DialogueStyle.Box);
                 break;
+            case "Chapter1_1": case "Chapter1_2": case "Chapter1_3": case "Chapter1_4":
+                ScreenFader.instance.Init(true); ScreenFader.instance.FadeIn(() => { }); break;
             default:
                 break;
         }
@@ -44,6 +46,10 @@ public class GameManagerEx
             switch (item.Name)
             {
                 case "Tutorial_Meka": item.Init(() => EndTutorial()); break;
+                case "Portal1_1": item.Init(() => OnPortal(1, 1)); break;
+                case "Portal1_2": item.Init(() => OnPortal(1, 2)); break;
+                case "Portal1_3": item.Init(() => OnPortal(1, 3)); break;
+                case "Portal1_4": item.Init(() => OnPortal(1, 4)); break;
                 default:
                     break;
             }
@@ -67,7 +73,27 @@ public class GameManagerEx
 
     public void StartFirstMap()
     {
-        ScreenFader.instance.FadeOut(() => SceneMover.MoveTo("FirstMapScene"));
+        ScreenFader.instance.FadeOut(() => SceneMover.MoveTo("Chapter1_1"));
+    }
+
+    public void OnPortal(int pChap, int pStage)
+    {
+        switch (pChap)
+        {
+            case 1:
+                {
+                    switch (pStage)
+                    {
+                        case 1: ScreenFader.instance.FadeOut(() => SceneMover.MoveTo("Chapter1_2")); break;
+                        case 2: ScreenFader.instance.FadeOut(() => SceneMover.MoveTo("Chapter1_3")); break;
+                        case 3: ScreenFader.instance.FadeOut(() => SceneMover.MoveTo("Chapter1_4")); break;
+                        case 4: ScreenFader.instance.FadeOut(() => SceneMover.MoveTo("Ending")); break;
+                        default: break;
+                    }
+                }
+                break;
+            default: break;
+        }
     }
 
     public void DialogueEnded()

@@ -131,7 +131,7 @@ public class EnemyBuilder : MonoBehaviour {
             builder.SetStatus(enemyStatus);
 
             EntityBehaviour behavior = builder.Build();
-            behavior.transform.parent = m_spawnedEnemy;
+            if (enemy.Key != EnemyType.TutorialBot) behavior.transform.parent = m_spawnedEnemy;
 
             if (m_hpPrefab != null && m_enemyUICanvas != null) {
                 if (behavior.TryGetComponent(out Enemy enemyInfo)) {

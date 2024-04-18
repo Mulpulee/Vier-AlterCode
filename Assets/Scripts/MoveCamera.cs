@@ -41,7 +41,7 @@ public class MoveCamera : MonoBehaviour
     void Update()
     {
         float x = Mathf.Clamp(Target_transform.position.x, minX, maxX);
-        float y = Mathf.Clamp(Target_transform.position.y, minY, maxY);
+        float y = Mathf.Clamp(Target_transform.position.y + 1f, minY, maxY);
 
         this_transform.position = Vector3.Lerp(this_transform.position, new Vector3(x, y, z), follow_speed * Time.deltaTime);
     }

@@ -49,7 +49,7 @@ namespace Entity.Components {
 
 		public void Jump() {
 			m_rigidbody.velocity -= Vector3.up * m_rigidbody.velocity.y;
-			m_rigidbody.AddForce(Vector3.up * 50.0f, ForceMode.Impulse);
+			m_rigidbody.AddForce(Vector3.up * 70.0f, ForceMode.Impulse);
 		}
 	}
 }
