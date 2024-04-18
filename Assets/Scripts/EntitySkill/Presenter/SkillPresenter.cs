@@ -4,11 +4,13 @@ using GameSystemManager;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utility;
 using Utility.DesignPattern.MVP;
 
 namespace EntitySkill.Presenter {
 	public class SkillPresenter : PresenterBase<SkillView> {
 		private Dictionary<int, Skill> m_skillByIndex = new();
+		[SerializeField] Text m_debug;
 
 		public override void InitializePresenter() {
 			PlayerEvent.Instance.OnPlayerSpawned += OnPlayerSpawnd;
@@ -28,7 +30,9 @@ namespace EntitySkill.Presenter {
 
 			GameInputManager.Instance.OnKeyChanged += OnKeyChanged;
 			psc.OnSkillUpdated += OnSkillUpdate;
-		}
+			m_debug.text += "OnPlayerSpawned()\n";
+
+        }
 
 		private void OnSkillUpdate(SkillSlot slot, Skill skill) {
 			if (skill == null) {
@@ -38,7 +42,8 @@ namespace EntitySkill.Presenter {
 			
 			View.SkillElement[(int)slot].gameObject.SetActive(true);
 			View.SkillElement[(int)slot].LoadResource(skill);
-			m_skillByIndex[(int)slot] = skill;
+            m_debug.text += $"OnSkillUpdate({skill.ID}) {ResourceLoader.SkillImageLoad(skill.ID) != null}\n";
+            m_skillByIndex[(int)slot] = skill;
 		}
 		private void OnKeyChanged() {
 			for (int i = 0; i < (int)SkillSlot.Count; i++) {
