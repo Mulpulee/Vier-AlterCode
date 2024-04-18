@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RealUse/Chapter1/Chapter1_4.unity
     guid: e85afe988c307af469dccef64fd79e43
+  - enabled: 1
+    path: Assets/Scenes/RealUse/Ending.unity
+    guid: caa2e3931d6604b47878718c97b746e3
   m_configObjects: {}
